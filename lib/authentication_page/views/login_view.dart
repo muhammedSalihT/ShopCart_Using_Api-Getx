@@ -1,0 +1,132 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:project_shopcart/homepage/views/home_screen.dart';
+import 'package:project_shopcart/widgets/custom_textformcard.dart';
+import 'package:project_shopcart/widgets/custom_textform.dart';
+
+class LoginView extends StatelessWidget {
+  const LoginView({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      children: [
+        const SizedBox(
+          height: 30,
+        ),
+        CoustemTextFormCard(
+          height: 190,
+          childrens: [
+            const SizedBox(
+              height: 20,
+            ),
+            const CustomTextForm(),
+            const SizedBox(
+              height: 10,
+            ),
+            const CustomTextForm(),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(HomeScreen());
+                },
+                child: const Text("LogIn"))
+          ],
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const Text(
+            "Forgot password?",
+            style: TextStyle(
+              decoration: TextDecoration.underline,
+              fontSize: 16.0,
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            children: const [
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Divider(
+                    thickness: 1,
+                  ),
+                ),
+              ),
+              Text('or'),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Divider(
+                    thickness: 1,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Container(
+            height: 30,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            topLeft: Radius.circular(20)),
+                      ),
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        "assets/google_logo.png",
+                        height: 20,
+                      )),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                    ),
+                    alignment: Alignment.center,
+                    child: const Text('Login with google',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Visibility(
+          visible: MediaQuery.of(context).viewInsets.bottom != 0,
+          child: const SizedBox(
+            height: 250,
+          ),
+        )
+      ],
+    );
+  }
+}
