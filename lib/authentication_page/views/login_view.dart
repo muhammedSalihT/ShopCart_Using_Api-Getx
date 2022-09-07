@@ -18,21 +18,30 @@ class LoginView extends StatelessWidget {
           height: 30,
         ),
         CoustemTextFormCard(
-          height: 190,
+          height: 210,
           childrens: [
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             const CustomTextForm(),
             const SizedBox(
               height: 10,
             ),
             const CustomTextForm(),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(HomeScreen());
-                },
-                child: const Text("LogIn"))
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              width: 300,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+                  onPressed: () {
+                    Get.to(const HomeScreen());
+                  },
+                  child: const Text("LogIn")),
+            )
           ],
         ),
         TextButton(
@@ -78,7 +87,7 @@ class LoginView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(25.0),
           child: Container(
-            height: 30,
+            height: 50,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),

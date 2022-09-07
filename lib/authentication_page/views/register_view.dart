@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_shopcart/authentication_page/views/authentication_screen.dart';
-import 'package:project_shopcart/homepage/views/home_screen.dart';
+import 'package:project_shopcart/authentication_page/views/verification_screen.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
 
@@ -19,7 +18,7 @@ class RegisterView extends StatelessWidget {
           height: 30,
         ),
         CoustemTextFormCard(
-          height: 480,
+          height: 450,
           childrens: [
             const SizedBox(
               height: 20,
@@ -35,33 +34,39 @@ class RegisterView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            CustomTextForm(),
-            SizedBox(
+            const CustomTextForm(),
+            const SizedBox(
               height: 10,
             ),
-            CustomTextForm(),
-            SizedBox(
+            const CustomTextForm(),
+            const SizedBox(
               height: 10,
             ),
-            CustomTextForm(),
-            SizedBox(
+            const CustomTextForm(),
+            const SizedBox(
               height: 10,
             ),
-            CustomTextForm(),
-            SizedBox(
+            const CustomTextForm(),
+            const SizedBox(
               height: 10,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(HomeScreen());
-                },
-                child: Text("Register")),
+            Container(
+              width: 300,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+                  onPressed: () {
+                    Get.to(VerificationScreeen());
+                  },
+                  child: const Text("Register")),
+            ),
           ],
         ),
         Visibility(

@@ -14,7 +14,7 @@ class CoustemTextFormCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5.0,
-      color: const Color.fromARGB(83, 145, 137, 137),
+      color: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
