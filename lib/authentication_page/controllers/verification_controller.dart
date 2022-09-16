@@ -17,6 +17,10 @@ class VerificationController extends GetxController {
     await SmsAutoFill().listenForCode();
   }
 
+  // repeatCount() async {
+  //   countdownController.autoStart;
+  // }
+
   @override
   void onClose() {
     messegageOtpCode.refresh();

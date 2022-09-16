@@ -27,7 +27,7 @@ class VerificationScreeen extends GetView<VerificationController> {
           height: size.height,
           width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 width: 150,
@@ -84,42 +84,37 @@ class VerificationScreeen extends GetView<VerificationController> {
               ),
               Container(
                 alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Countdown(
-                      controller: controller.countdownController,
-                      seconds: 30,
-                      interval: const Duration(milliseconds: 1000),
-                      build: (context, currentRemainingTime) {
-                        if (currentRemainingTime == 0.0) {
-                          return RichText(
-                            text: const TextSpan(
-                              text: " Didn't recive a OTP?",
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.black),
-                              children: [
-                                TextSpan(
-                                  text: ' Request again',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.blue,
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                ),
-                              ],
+                child: Countdown(
+                  controller: controller.countdownController,
+                  seconds: 5,
+                  interval: const Duration(milliseconds: 1000),
+                  build: (context, currentRemainingTime) {
+                    if (currentRemainingTime == 0.0) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Did't recive OTP?"),
+                          TextButton(
+                            onPressed: () {},
+                            child: const Text(
+                              "Request again",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 16,
+                                  color: Colors.blue),
                             ),
-                          );
-                        } else {
-                          return Text(
-                            " Remaining Time:${currentRemainingTime.toString().length == 4 ? " ${currentRemainingTime.toString().substring(0, 2)}" : " ${currentRemainingTime.toString().substring(0, 1)}"}",
-                            style: const TextStyle(
-                                fontSize: 16, color: Colors.red),
-                          );
-                        }
-                      },
-                    ),
-                  ],
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Text(
+                        currentRemainingTime.toString().length == 4
+                            ? "Time remaining : ${currentRemainingTime.toString().substring(0, 2)}"
+                            : "Time remaining : ${currentRemainingTime.toString().substring(0, 1)}",
+                        style: const TextStyle(fontSize: 16, color: Colors.red),
+                      );
+                    }
+                  },
                 ),
               ),
             ],
