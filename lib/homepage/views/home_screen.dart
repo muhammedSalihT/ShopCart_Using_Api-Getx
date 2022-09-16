@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_shopcart/homepage/controllers/main_category_provider.dart';
+import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
