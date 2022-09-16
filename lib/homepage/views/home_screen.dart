@@ -26,33 +26,36 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-        body: Column(
-          children: [
-            LimitedBox(
-              maxHeight: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      const SizedBox(width: 5),
-                      Container(
-                        color: Colors.orange,
-                        height: 50,
-                        width: 80,
-                        child: const Text(
-                          "Men",
-                          style: TextStyle(color: Colors.black26),
+        body: DefaultTabController(
+          length:,
+          child: Column(
+            children: [
+              LimitedBox(
+                maxHeight: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        const SizedBox(width: 5),
+                        Container(
+                          color: Colors.orange,
+                          height: 50,
+                          width: 80,
+                          child: const Text(
+                            "Men",
+                            style: TextStyle(color: Colors.black26),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 5),
-                    ],
-                  );
-                },
-              ),
-            )
-          ],
+                        const SizedBox(width: 5),
+                      ],
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
