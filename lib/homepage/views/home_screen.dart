@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+   HomeScreen({Key? key}) : super(key: key);
+
+  final mainCategoryController = MainCategoryController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: DefaultTabController(
-          length:context.read<MainCategoryProvider>(),
+          length:mainCategoryController.,
           child: Column(
             children: [
               LimitedBox(
