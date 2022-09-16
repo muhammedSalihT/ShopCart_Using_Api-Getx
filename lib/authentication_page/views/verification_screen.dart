@@ -122,7 +122,7 @@ class VerificationScreeen extends GetView<VerificationController> {
         ),
         bottomSheet: GestureDetector(
           onTap: () {
-            Get.to(const HomeScreen());
+            Get.to( HomeScreen());
           },
           child: Container(
             margin: const EdgeInsets.all(10),

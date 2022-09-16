@@ -38,7 +38,7 @@ class LoginView extends StatelessWidget {
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
                   onPressed: () {
-                    Get.to(const HomeScreen());
+                    Get.to( HomeScreen());
                   },
                   child: const Text("LogIn")),
             )

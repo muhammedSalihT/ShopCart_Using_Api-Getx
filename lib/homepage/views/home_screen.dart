@@ -1,14 +1,24 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
 
-class HomeScreen extends StatelessWidget {
-   HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late final tabController = TabController(length: 6, vsync: this);
   final mainCategoryController = MainCategoryController();
 
   @override
   Widget build(BuildContext context) {
+    log('message');
+    final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -31,31 +41,46 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: DefaultTabController(
-          length:mainCategoryController.,
+          length: mainCategoryController.mainCategoryList.length,
           child: Column(
             children: [
               LimitedBox(
                 maxHeight: 100,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10,
+                  itemCount: mainCategoryController.mainCategoryList.length,
                   itemBuilder: (context, index) {
+                    log('$index');
                     return Row(
                       children: [
                         const SizedBox(width: 5),
                         Container(
                           color: Colors.orange,
-                          height: 50,
-                          width: 80,
-                          child: const Text(
-                            "Men",
-                            style: TextStyle(color: Colors.black26),
+                          height: 40,
+                          width: 100,
+                          child: TabBar(
+                            tabs: [
+                              
+                            ],
                           ),
                         ),
                         const SizedBox(width: 5),
                       ],
                     );
                   },
+                ),
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: tabController,
+                  children: const [
+                    Text("sfbsbdisbdihbhi"),
+                    Text("d"),
+                    Text("cv"),
+                    Text("dhd"),
+                    Text("fhdh"),
+                    Text("dfhdhhd")
+                  ],
                 ),
               )
             ],
