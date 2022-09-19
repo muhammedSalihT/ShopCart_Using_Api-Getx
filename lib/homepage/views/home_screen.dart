@@ -2,7 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
+import 'package:project_shopcart/homepage/views/global_tab.dart';
 import 'package:project_shopcart/homepage/views/tab_screen1.dart';
+import 'package:project_shopcart/homepage/views/tab_screen2.dart';
+import 'package:project_shopcart/homepage/views/tab_screen3.dart';
+import 'package:project_shopcart/homepage/views/tab_screen4.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -10,24 +14,10 @@ class HomeScreen extends StatelessWidget {
 
   List<Widget> pages = [
     const TabScreen1(),
-    Container(
-      height: 200,
-      color: Colors.indigo,
-    ),
-    Container(
-      height: 200,
-      color: Colors.grey,
-    ),
-    Container(
-      height: 200,
-      color: Colors.yellow,
-    ),
-    Container(
-      color: Colors.indigo,
-    ),
-    Container(
-      color: Colors.pink,
-    ),
+    const TabScreen2(),
+    const TabScreen3(),
+    const TabScreen4(),
+    const GlobalTab(),
   ];
 
   @override
