@@ -9,7 +9,7 @@ class TabScreen1 extends StatelessWidget {
       children: [
         Container(
           height: 50,
-          color: Colors.grey,
+          color: Colors.blue,
         )
       ],
     );
