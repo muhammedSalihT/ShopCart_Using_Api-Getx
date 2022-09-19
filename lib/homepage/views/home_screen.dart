@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,9 +9,11 @@ class HomeScreen extends StatelessWidget {
 
   List<Widget> pages = [
     Container(
-      height: 200,
-      color: Colors.white38,
-    ),
+        height: 200,
+        color: Colors.white38,
+        child: Container(
+          color: Colors.deepOrangeAccent,
+        )),
     Container(
       height: 200,
       color: Colors.indigo,
@@ -55,79 +56,37 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-        body: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              titleSpacing: 5,
-              automaticallyImplyLeading: false,
-              centerTitle: false,
-              toolbarHeight: 60,
-              floating: true,
-              flexibleSpace: const FlexibleSpaceBar(),
-              title: LimitedBox(
-                maxHeight: 200,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: mainCategoryController.mainCategoryList.length,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            mainCategoryController.currentPage.value = index;
-                          },
-                          child: Obx(
-                            () {
-                              return Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.blue),
-                                    color: mainCategoryController
-                                                .currentPage.value ==
-                                            index
-                                        ? Colors.cyan
-                                        : Colors.grey),
-                                height: 40,
-                                width: 100,
-                                child: Text(mainCategoryController
-                                    .mainCategoryList[index].categoryName),
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-            ),
-            SliverAppBar(
+        body: DefaultTabController(
+          length: mainCategoryController.mainCategoryList.length,
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
                 titleSpacing: 5,
                 automaticallyImplyLeading: false,
-                backgroundColor: Colors.white,
-                toolbarHeight: size.height,
-                title: Obx(() {
-                  return pages[mainCategoryController.currentPage.value];
-                })
-                // Column(
-                //   crossAxisAlignment: CrossAxisAlignment.start,
-                //   children: [
-                //     Container(
-                //       color: Colors.orange,
-                //       height: 200,
-                //     ),
-                //     Container(
-                //       height: 200,
-                //       color: Colors.yellow,
-                //     )
-                //   ],
-                // ),
-                )
-          ],
+                centerTitle: false,
+                toolbarHeight: 60,
+                floating: true,
+                flexibleSpace: const FlexibleSpaceBar(),
+                title: TabBar(
+                    labelColor: Colors.blue,
+                    isScrollable: true,
+                    tabs: mainCategoryController.mainCategoryList
+                        .map((e) => Tab(
+                              text: e.categoryName,
+                            ))
+                        .toList()),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  color: Colors.white,
+                  height: size.height,
+                  child: TabBarView(children: pages),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
