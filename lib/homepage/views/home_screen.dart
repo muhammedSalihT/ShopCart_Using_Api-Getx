@@ -2,18 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
+import 'package:project_shopcart/homepage/views/tab_screen1.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   final mainCategoryController = MainCategoryController();
 
   List<Widget> pages = [
-    Container(
-        height: 200,
-        color: Colors.white38,
-        child: Container(
-          color: Colors.deepOrangeAccent,
-        )),
+    const TabScreen1(),
     Container(
       height: 200,
       color: Colors.indigo,
