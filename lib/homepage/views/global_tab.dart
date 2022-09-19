@@ -8,7 +8,7 @@ class GlobalTab extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 50,
+          height: 100,
           color: Colors.grey,
         )
       ],
