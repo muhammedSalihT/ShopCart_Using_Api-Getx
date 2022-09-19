@@ -12,14 +12,6 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   final mainCategoryController = MainCategoryController();
 
-  List<Widget> pages = [
-    const TabScreen1(),
-    const TabScreen2(),
-    const TabScreen3(),
-    const TabScreen4(),
-    const GlobalTab(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     log('message');
@@ -68,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   color: Colors.white,
                   height: size.height,
-                  child: TabBarView(children:mainCategoryController.mainCategoryList.map((e) =>getScreen(e.categoryName)).toList())
+                  child: TabBarView(children:mainCategoryController.mainCategoryList.map((e) =>mainCategoryController. getScreen(e.categoryName)).toList())
                 ),
               )
             ],
@@ -79,17 +71,4 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-Widget getScreen(String screen){
-  switch(screen){
-    case "shirts":
-    return const TabScreen1();
-    case "Jeans":
-    return const TabScreen2();
-    case "Tracksuits":
-    return const TabScreen3();
-    case "Smart Watches":
-    return const TabScreen4();
-    default :return const GlobalTab();
-  }
-  
-}
+
