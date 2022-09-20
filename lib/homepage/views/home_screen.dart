@@ -2,11 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
-import 'package:project_shopcart/homepage/views/global_tab.dart';
-import 'package:project_shopcart/homepage/views/tab_screen1.dart';
-import 'package:project_shopcart/homepage/views/tab_screen2.dart';
-import 'package:project_shopcart/homepage/views/tab_screen3.dart';
-import 'package:project_shopcart/homepage/views/tab_screen4.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
