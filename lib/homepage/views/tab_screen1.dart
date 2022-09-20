@@ -12,7 +12,7 @@ class TabScreen1 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const HomeCategoryBanner(),
+          const HomeCategoryBanner(text: "Recently Viewed Items"),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: SizedBox(
@@ -72,4 +72,3 @@ class TabScreen1 extends StatelessWidget {
     );
   }
 }
-
