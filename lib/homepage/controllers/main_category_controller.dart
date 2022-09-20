@@ -15,6 +15,7 @@ class MainCategoryController extends GetxController {
     MainCategoryModel(categoryName: "Smart Watches"),
     MainCategoryModel(categoryName: "Shoes"),
     MainCategoryModel(categoryName: "Wallets"),
+    MainCategoryModel(categoryName: "Wallets"),
   ];
 
   Widget getScreen(String screen) {
