@@ -5,13 +5,15 @@ class TabScreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 50,
-          color: Colors.blue,
-        )
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            height: 50,
+            color: Colors.blue,
+          )
+        ],
+      ),
     );
   }
 }
