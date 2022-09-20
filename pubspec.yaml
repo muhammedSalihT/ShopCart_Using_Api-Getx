@@ -33,6 +33,7 @@ dependencies:
   card_swiper: ^2.0.4
   sms_autofill: ^2.2.0
   timer_count_down: ^2.2.1
+  carousel_slider: ^4.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

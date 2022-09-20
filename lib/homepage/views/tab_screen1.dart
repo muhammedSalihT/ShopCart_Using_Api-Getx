@@ -67,6 +67,8 @@ class TabScreen1 extends StatelessWidget {
               ),
             ),
           ),
+          const HomeCategoryBanner(text: "Popular"),
+          
         ],
       ),
     );
