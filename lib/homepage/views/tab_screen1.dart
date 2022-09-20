@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project_shopcart/widgets/home_category_banner.dart';
+import 'package:project_shopcart/widgets/populer_items.dart';
 
 class TabScreen1 extends StatelessWidget {
   const TabScreen1({Key? key}) : super(key: key);
@@ -69,15 +70,9 @@ class TabScreen1 extends StatelessWidget {
             ),
           ),
           const HomeCategoryBanner(text: "Popular"),
-          getPopulars()
+          const PopulerItems()
         ],
       ),
     );
   }
-
-  getPopulars() {
-    return PopulerItems();
-  }
 }
-
-
