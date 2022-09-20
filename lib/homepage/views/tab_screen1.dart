@@ -76,26 +76,8 @@ class TabScreen1 extends StatelessWidget {
   }
 
   getPopulars() {
-    return CarouselSlider(
-      options: CarouselOptions(
-        scrollPhysics: const NeverScrollableScrollPhysics(),
-        height: 370,
-        enlargeCenterPage: true,
-        disableCenter: true,
-        autoPlay: true,
-        viewportFraction: .75,
-      ),
-      items: List.generate(
-        5,
-        (index) => Container(
-          height: 350,
-          width: 200,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              image: const DecorationImage(
-                  image: AssetImage("assets/images.jpg"))),
-        ),
-      ),
-    );
+    return PopulerItems();
   }
 }
+
+
