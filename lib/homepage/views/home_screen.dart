@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
             slivers: [
               SliverAppBar(
                 elevation: 0,
-                backgroundColor: Colors.transparent,
+                backgroundColor: Colors.black,
                 titleSpacing: 5,
                 automaticallyImplyLeading: false,
                 centerTitle: false,
@@ -43,6 +43,7 @@ class HomeScreen extends StatelessWidget {
                 floating: true,
                 flexibleSpace: const FlexibleSpaceBar(),
                 title: TabBar(
+                    indicator: const BoxDecoration(color: Colors.white),
                     labelColor: Colors.blue,
                     isScrollable: true,
                     tabs: mainCategoryController.mainCategoryList
