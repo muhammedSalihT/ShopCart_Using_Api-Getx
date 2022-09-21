@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project_shopcart/widgets/home_category_banner.dart';
 import 'package:project_shopcart/widgets/populer_items.dart';
@@ -70,7 +69,36 @@ class TabScreen1 extends StatelessWidget {
             ),
           ),
           const HomeCategoryBanner(text: "Popular"),
-          const PopulerItems()
+          const PopulerItems(),
+          const HomeCategoryBanner(text: "Categories"),
+          LimitedBox(
+            maxHeight: 500,
+            child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3, childAspectRatio: 1 / 1),
+                itemCount: 8,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: const EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.cyanAccent)),
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.tealAccent)),
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage("assets/images.jpg"))),
+                      ),
+                    ),
+                  );
+                }),
+          )
         ],
       ),
     );

@@ -52,17 +52,29 @@ class HomeScreen extends StatelessWidget {
                             ))
                         .toList()),
               ),
-              SliverToBoxAdapter(
-                child: Container(
+              SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  return Container(
                     color: Colors.white,
                     height: size.height,
                     child: TabBarView(
-                        physics: const BouncingScrollPhysics(),
                         children: mainCategoryController.mainCategoryList
                             .map((e) => mainCategoryController
                                 .getScreen(e.categoryName))
-                            .toList())),
+                            .toList()),
+                  );
+                }, childCount: 1),
               )
+              // SliverToBoxAdapter(
+              //   child: Expanded(
+              //     child: TabBarView(
+              //         physics: const BouncingScrollPhysics(),
+              //         children: mainCategoryController.mainCategoryList
+              //             .map((e) =>
+              //                 mainCategoryController.getScreen(e.categoryName))
+              //             .toList()),
+              //   ),
+              // )
             ],
           ),
         ),
