@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project_shopcart/authentication_page/views/login_view.dart';
 import 'package:project_shopcart/authentication_page/views/register_view.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
