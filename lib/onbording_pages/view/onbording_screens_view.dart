@@ -111,7 +111,7 @@ class OnBordingScreen extends StatelessWidget {
         onPressed: () {
           log('message');
           Get.to(
-            AuthScreen(),
+            const AuthScreen(),
             transition: Transition.circularReveal,
             duration: const Duration(seconds: 1),
           );
