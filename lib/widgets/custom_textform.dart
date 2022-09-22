@@ -23,31 +23,33 @@ class CustomTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: (width == null) ? 300 : width,
-      child: Column(
-        children: [
-          TextFormField(
-            controller: controller,
-            obscureText: hideText,
-            validator: validator,
-            keyboardType: keyboardType,
-            style: const TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: const BorderSide(color: Colors.orange)),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: const BorderSide(color: Colors.orange)),
-              border: InputBorder.none,
-              prefixIcon: Icon(
-                icon,
-                color: Colors.black,
-              ),
-              hintText: hintText,
+      width: 320,
+      child: TextFormField(
+        controller: controller,
+        obscureText: hideText,
+        validator: validator,
+        keyboardType: keyboardType,
+        style: const TextStyle(color: Colors.black),
+        decoration: InputDecoration(
+            errorBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+              borderSide: BorderSide(color: Colors.red),
             ),
-          ),
-        ],
+            enabledBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+              borderSide: BorderSide(),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+              borderSide: BorderSide(color: Colors.green, width: 2),
+            ),
+            border: const OutlineInputBorder(),
+            hintText: hintText,
+            labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+            filled: true,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            fillColor: const Color(0x77ffffff)),
       ),
     );
   }
