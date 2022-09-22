@@ -21,7 +21,6 @@ class CoustemTextFormCard extends StatelessWidget {
         ),
         child: SizedBox(
           width: double.infinity,
-          height: height,
           child: Column(
             children:
                 List.generate(childrens.length, (index) => childrens[index]),
