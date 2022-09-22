@@ -14,15 +14,14 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: registrationController.formKey,
-      child: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          const SizedBox(
-            height: 30,
-          ),
-          CoustemTextFormCard(
+    return Column(
+      children: [
+        const SizedBox(
+          height: 30,
+        ),
+        Form(
+          key: registrationController.formKey,
+          child: CoustemTextFormCard(
             height: 500,
             childrens: [
               const SizedBox(
@@ -83,14 +82,14 @@ class RegisterView extends StatelessWidget {
               ),
             ],
           ),
-          Visibility(
-            visible: MediaQuery.of(context).viewInsets.bottom != 0,
-            child: const SizedBox(
-              height: 250,
-            ),
-          )
-        ],
-      ),
+        ),
+        Visibility(
+          visible: MediaQuery.of(context).viewInsets.bottom != 0,
+          child: const SizedBox(
+            height: 250,
+          ),
+        )
+      ],
     );
   }
 }

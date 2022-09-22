@@ -20,7 +20,7 @@ class CoustemTextFormCard extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
         child: SizedBox(
-          width: 300.0,
+          width: double.infinity,
           height: height,
           child: Column(
             children:
