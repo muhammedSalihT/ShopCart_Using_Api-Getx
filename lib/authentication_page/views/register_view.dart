@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/authentication_page/controllers/registration_controller.dart';
+import 'package:project_shopcart/constends/box.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
 
@@ -24,13 +25,7 @@ class RegisterView extends StatelessWidget {
           CoustemTextFormCard(
             height: 450,
             childrens: [
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [],
-              ),
+              Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
@@ -38,9 +33,7 @@ class RegisterView extends StatelessWidget {
                           : 'Enter valid Email',
                   controller: registrationController.nameController,
                   hintText: "Name"),
-              const SizedBox(
-                height: 10,
-              ),
+              Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
@@ -48,9 +41,7 @@ class RegisterView extends StatelessWidget {
                           : 'Enter valid Email',
                   controller: registrationController.reigsterEmailControll,
                   hintText: "Email"),
-              const SizedBox(
-                height: 10,
-              ),
+              Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
@@ -58,9 +49,7 @@ class RegisterView extends StatelessWidget {
                           : 'Enter valid Email',
                   controller: registrationController.numberControlletr,
                   hintText: "Phone Number"),
-              const SizedBox(
-                height: 10,
-              ),
+              Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
@@ -68,9 +57,7 @@ class RegisterView extends StatelessWidget {
                           : 'Enter valid Email',
                   controller: registrationController.passwordController,
                   hintText: "Passwoard"),
-              const SizedBox(
-                height: 10,
-              ),
+              Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
@@ -78,9 +65,7 @@ class RegisterView extends StatelessWidget {
                           : 'Enter valid Email',
                   controller: registrationController.confirmPasswordController,
                   hintText: "Confirm passwoard"),
-              const SizedBox(
-                height: 10,
-              ),
+              Box().sizedBox1,
               Container(
                 width: 300,
                 decoration:
