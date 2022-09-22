@@ -12,16 +12,15 @@ class CoustemTextFormCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Expanded(
       child: Card(
-        elevation: 5.0,
         color: Colors.white,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
         child: SizedBox(
           width: double.infinity,
-          child: Column(
+          child: ListView(
             children:
                 List.generate(childrens.length, (index) => childrens[index]),
           ),
