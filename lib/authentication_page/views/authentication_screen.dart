@@ -9,28 +9,20 @@ class AuthScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: Stack(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image(
-                  width: double.infinity,
-                  height: size.height * .25,
-                  image: const AssetImage('assets/10410228_17983.jpg'),
-                  fit: BoxFit.fill,
-                )
-              ],
+            Image(
+              width: double.infinity,
+              height: size.height * .25,
+              image: const AssetImage('assets/10410228_17983.jpg'),
+              fit: BoxFit.fill,
             ),
-            Positioned(
-              top: size.height * .23,
-              left: 10,
-              right: 10,
+            Expanded(
               child: Container(
-                height: size.height * .73,
                 width: size.width,
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 223, 220, 220),
+                  color: Color.fromARGB(255, 143, 142, 142),
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                 ),
                 child: DefaultTabController(
@@ -75,7 +67,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

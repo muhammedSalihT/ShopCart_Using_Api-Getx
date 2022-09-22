@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/authentication_page/controllers/registration_controller.dart';
-import 'package:project_shopcart/authentication_page/controllers/verification_controller.dart';
-import 'package:project_shopcart/authentication_page/views/verification_screen.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
 
@@ -34,36 +32,50 @@ class RegisterView extends StatelessWidget {
                 children: const [],
               ),
               CustomTextForm(
-                  validator: (value) {
-                    value != null && GetUtils.isEmail(value.trim())
-                        ? null
-                        : "enter name";
-                    return null;
-                  },
+                  validator: (val) =>
+                      val != null && GetUtils.isEmail(val.trim())
+                          ? null
+                          : 'Enter valid Email',
                   controller: registrationController.nameController,
                   hintText: "Name"),
               const SizedBox(
                 height: 10,
               ),
               CustomTextForm(
+                 validator: (val) =>
+                      val != null && GetUtils.isEmail(val.trim())
+                          ? null
+                          : 'Enter valid Email',
                   controller: registrationController.reigsterEmailControll,
                   hintText: "Email"),
               const SizedBox(
                 height: 10,
               ),
               CustomTextForm(
+                 validator: (val) =>
+                      val != null && GetUtils.isEmail(val.trim())
+                          ? null
+                          : 'Enter valid Email',
                   controller: registrationController.numberControlletr,
                   hintText: "Phone Number"),
               const SizedBox(
                 height: 10,
               ),
               CustomTextForm(
+                 validator: (val) =>
+                      val != null && GetUtils.isEmail(val.trim())
+                          ? null
+                          : 'Enter valid Email',
                   controller: registrationController.passwordController,
                   hintText: "Passwoard"),
               const SizedBox(
                 height: 10,
               ),
               CustomTextForm(
+                 validator: (val) =>
+                      val != null && GetUtils.isEmail(val.trim())
+                          ? null
+                          : 'Enter valid Email',
                   controller: registrationController.confirmPasswordController,
                   hintText: "Confirm passwoard"),
               const SizedBox(
