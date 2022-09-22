@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_shopcart/constends/box.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
 
@@ -28,13 +29,9 @@ class LoginView extends StatelessWidget {
                         ? null
                         : "Enter valid email",
                 hintText: "Email"),
-            const SizedBox(
-              height: 10,
-            ),
+            Box().sizedBox1,
             const CustomTextForm(hintText: "Passwoard"),
-            const SizedBox(
-              height: 10,
-            ),
+            Box().sizedBox1,
             Container(
               width: 300,
               decoration:

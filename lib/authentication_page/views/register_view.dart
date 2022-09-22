@@ -25,7 +25,9 @@ class RegisterView extends StatelessWidget {
           CoustemTextFormCard(
             height: 450,
             childrens: [
-              Box().sizedBox1,
+              const SizedBox(
+                height: 20,
+              ),
               CustomTextForm(
                   validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
