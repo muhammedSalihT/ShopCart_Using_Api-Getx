@@ -42,7 +42,7 @@ class RegisterView extends StatelessWidget {
                 height: 10,
               ),
               CustomTextForm(
-                 validator: (val) =>
+                  validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
                           ? null
                           : 'Enter valid Email',
@@ -52,7 +52,7 @@ class RegisterView extends StatelessWidget {
                 height: 10,
               ),
               CustomTextForm(
-                 validator: (val) =>
+                  validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
                           ? null
                           : 'Enter valid Email',
@@ -62,7 +62,7 @@ class RegisterView extends StatelessWidget {
                 height: 10,
               ),
               CustomTextForm(
-                 validator: (val) =>
+                  validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
                           ? null
                           : 'Enter valid Email',
@@ -72,7 +72,7 @@ class RegisterView extends StatelessWidget {
                 height: 10,
               ),
               CustomTextForm(
-                 validator: (val) =>
+                  validator: (val) =>
                       val != null && GetUtils.isEmail(val.trim())
                           ? null
                           : 'Enter valid Email',
