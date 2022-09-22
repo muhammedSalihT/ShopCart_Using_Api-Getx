@@ -83,12 +83,12 @@ class RegisterView extends StatelessWidget {
             ],
           ),
         ),
-        Visibility(
-          visible: MediaQuery.of(context).viewInsets.bottom != 0,
-          child: const SizedBox(
-            height: 250,
-          ),
-        )
+        // Visibility(
+        //   visible: MediaQuery.of(context).viewInsets.bottom != 0,
+        //   child: const SizedBox(
+        //     height: 250,
+        //   ),
+        // )
       ],
     );
   }
