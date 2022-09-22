@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_shopcart/homepage/views/home_screen.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
 
@@ -23,11 +22,16 @@ class LoginView extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const CustomTextForm(),
+            CustomTextForm(
+                validator: (value) =>
+                    value != null && GetUtils.isEmail(value.trim())
+                        ? null
+                        : "Enter valid email",
+                hintText: "Email"),
             const SizedBox(
               height: 10,
             ),
-            const CustomTextForm(),
+            const CustomTextForm(hintText: "Passwoard"),
             const SizedBox(
               height: 10,
             ),
@@ -38,7 +42,7 @@ class LoginView extends StatelessWidget {
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
                   onPressed: () {
-                    Get.to( HomeScreen());
+                    // Get.to(HomeScreen());
                   },
                   child: const Text("LogIn")),
             )

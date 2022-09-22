@@ -65,13 +65,10 @@ class AuthScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                    const  Expanded(
+                      Expanded(
                         child: TabBarView(
-                          physics:  BouncingScrollPhysics(),
-                          children: [
-                            LoginView(),
-                            RegisterView()
-                          ],
+                          physics: const BouncingScrollPhysics(),
+                          children: [const LoginView(), RegisterView()],
                         ),
                       ),
                     ],
@@ -85,8 +82,3 @@ class AuthScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
