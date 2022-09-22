@@ -23,7 +23,7 @@ class RegisterView extends StatelessWidget {
             height: 30,
           ),
           CoustemTextFormCard(
-            height: 450,
+            height: 500,
             childrens: [
               const SizedBox(
                 height: 20,
