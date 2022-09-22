@@ -25,7 +25,7 @@ class RegisterView extends StatelessWidget {
             height: 450,
             childrens: [
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

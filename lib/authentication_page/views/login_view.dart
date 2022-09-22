@@ -20,7 +20,7 @@ class LoginView extends StatelessWidget {
           height: 210,
           childrens: [
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             CustomTextForm(
                 validator: (value) =>
