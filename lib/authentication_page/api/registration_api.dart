@@ -5,14 +5,15 @@ import 'package:project_shopcart/authentication_page/models/registration_model.d
 
 class RegistrationApi {
   BaseOptions baseOptions = BaseOptions(baseUrl: Url.baseUrl);
- signupUser(SignUpModel signUpModel) async {
+  Future<SignUpRespoModel> signupUser(SignUpModel signUpModel) async {
     log('message1');
     try {
       final responce =
           await Dio(baseOptions).post(Url.signUp, data: signUpModel.toJson());
       if (responce.statusCode == 200) {
         return SignUpRespoModel.fromJson(responce.data);
-        
+      }else{
+        return SignUpRespoModel(message: 'Some unknown error occured');
       }
     } on DioError catch (e) {
       log(e.message.toString());
