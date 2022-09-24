@@ -1,19 +1,28 @@
-class Welcome {
-    Welcome({
-        required this.userMail,
-        required this.userPassword,
-    });
+class SignUpModel {
+  SignUpModel({
+    required this.userMail,
+    required this.userPassword,
+  });
 
-    String userMail;
-    String userPassword;
+  String userMail;
+  String userPassword;
 
-    factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-        userMail: json["user_mail"],
-        userPassword: json["user_password"],
-    );
-
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "user_mail": userMail,
         "user_password": userPassword,
-    };
+      };
+}
+
+class SignUpRespoModel {
+  SignUpRespoModel({this.status, this.id, this.message});
+
+  bool? status;
+  String? id;
+  String? message;
+
+  factory SignUpRespoModel.fromJson(Map<String, dynamic> json) =>
+      SignUpRespoModel(
+        status: json["status"] ?? "",
+        id: json["id"] ?? "",
+      );
 }

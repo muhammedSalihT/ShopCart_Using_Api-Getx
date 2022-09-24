@@ -29,7 +29,7 @@ class RegisterView extends StatelessWidget {
               ),
               CustomTextForm(
                   validator: (val) =>
-                      val != null && GetUtils.isEmail(val.trim())
+                      val != null
                           ? null
                           : 'Enter valid Email',
                   controller: registrationController.nameController,
@@ -45,7 +45,7 @@ class RegisterView extends StatelessWidget {
               Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
-                      val != null && GetUtils.isEmail(val.trim())
+                      val != null 
                           ? null
                           : 'Enter valid Email',
                   controller: registrationController.numberControlletr,
@@ -53,7 +53,7 @@ class RegisterView extends StatelessWidget {
               Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
-                      val != null && GetUtils.isEmail(val.trim())
+                      val != null 
                           ? null
                           : 'Enter valid Email',
                   controller: registrationController.passwordController,
@@ -61,7 +61,7 @@ class RegisterView extends StatelessWidget {
               Box().sizedBox1,
               CustomTextForm(
                   validator: (val) =>
-                      val != null && GetUtils.isEmail(val.trim())
+                      val != null 
                           ? null
                           : 'Enter valid Email',
                   controller: registrationController.confirmPasswordController,
