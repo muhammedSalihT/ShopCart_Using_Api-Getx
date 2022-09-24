@@ -9,15 +9,12 @@ import 'package:project_shopcart/authentication_page/views/verification_screen.d
 class RegistrationController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
-
-
   TextEditingController reigsterEmailControll = TextEditingController();
   TextEditingController registerPasswordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController numberControlletr = TextEditingController();
-
 
   validated() async {
     if (formKey.currentState!.validate()) {}
@@ -28,12 +25,12 @@ class RegistrationController extends GetxController {
     final SignUpRespoModel responce = await RegistrationApi().signupUser(obj);
     if (responce.status != null) {
       if (responce.status == true) {
-        
         Get.showSnackbar(const GetSnackBar(
           message: "Please enter OTP to complete",
           duration: Duration(seconds: 2),
         ));
-        Get.to(VerificationScreeen());
+        final userId = responce.id;
+        Get.to(VerificationScreeen(userId: responce.id!,));
       } else {
         Get.showSnackbar(GetSnackBar(
           message: responce.message.toString(),
