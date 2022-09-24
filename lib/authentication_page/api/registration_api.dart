@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:project_shopcart/api_const/api_url.dart';
+import 'package:project_shopcart/api/api_const.dart/api_url.dart';
 import 'package:project_shopcart/authentication_page/models/registration_model.dart';
 
-class AuthApi {
+class RegistrationApi {
   BaseOptions baseOptions = BaseOptions(baseUrl: Url.baseUrl);
  signupUser(SignUpModel signUpModel) async {
     log('message1');
@@ -13,6 +13,7 @@ class AuthApi {
           await Dio(baseOptions).post(Url.signUp, data: signUpModel.toJson());
       if (responce.statusCode == 200) {
         return SignUpRespoModel.fromJson(responce.data);
+        
       }
     } on DioError catch (e) {
       log(e.message.toString());

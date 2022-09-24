@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_shopcart/authentication_page/controllers/registration_controller.dart';
 import 'package:project_shopcart/authentication_page/controllers/verification_controller.dart';
-import 'package:project_shopcart/homepage/views/home_screen.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
@@ -10,6 +10,7 @@ class VerificationScreeen extends GetView<VerificationController> {
 
   @override
   final controller = Get.put(VerificationController());
+  final regisController = Get.find<RegistrationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class VerificationScreeen extends GetView<VerificationController> {
                 height: 30,
               ),
               Text(
-                "Please enter the 4 digit code sent to \n +93 ***** 99",
+                "Please enter the 4 digit code sent to ${regisController.reigsterEmailControll.text}",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 16, color: Colors.grey.shade500, height: 1.5),
@@ -66,6 +67,7 @@ class VerificationScreeen extends GetView<VerificationController> {
               SizedBox(
                 width: 300,
                 child: PinFieldAutoFill(
+                  codeLength: 4,
                   textInputAction: TextInputAction.done,
                   decoration: UnderlineDecoration(
                       colorBuilder: const FixedColorBuilder(Colors.transparent),
@@ -122,7 +124,7 @@ class VerificationScreeen extends GetView<VerificationController> {
         ),
         bottomSheet: GestureDetector(
           onTap: () {
-            Get.to( HomeScreen());
+            
           },
           child: Container(
             margin: const EdgeInsets.all(10),
