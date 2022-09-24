@@ -1,7 +1,6 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:project_shopcart/api/api_const.dart/api_url.dart';
+import 'package:project_shopcart/api_const/api_urls.dart';
 import 'package:project_shopcart/authentication_page/models/registration_model.dart';
 
 class RegistrationApi {
