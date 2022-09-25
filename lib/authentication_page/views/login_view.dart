@@ -6,7 +6,7 @@ import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
 
 class LoginView extends StatelessWidget {
-   LoginView({
+  LoginView({
     Key? key,
   }) : super(key: key);
 
@@ -20,7 +20,7 @@ class LoginView extends StatelessWidget {
           height: 30,
         ),
         Form(
-          key: ,
+          key: regiController.formKey,
           child: CoustemTextFormCard(
             height: 0,
             childrens: [
@@ -41,9 +41,11 @@ class LoginView extends StatelessWidget {
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+                    style:
+                        ElevatedButton.styleFrom(shape: const StadiumBorder()),
                     onPressed: () {
                       // Get.to(HomeScreen());
+                      regiController.validated();
                     },
                     child: const Text("LogIn")),
               ),
