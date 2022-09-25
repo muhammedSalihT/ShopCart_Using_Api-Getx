@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_shopcart/authentication_page/controllers/loginview_controller.dart';
 import 'package:project_shopcart/authentication_page/controllers/registration_controller.dart';
 import 'package:project_shopcart/constends/box.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
@@ -10,7 +11,7 @@ class LoginView extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final registrationController = Get.put(RegistrationController());
+  final loginController = Get.put(LoginViewController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class LoginView extends StatelessWidget {
           height: 30,
         ),
         Form(
-          key: registrationController.formKey,
+          key: loginController.formKey,
           child: CoustemTextFormCard(
             height: 0,
             childrens: [
@@ -50,7 +51,7 @@ class LoginView extends StatelessWidget {
                         ElevatedButton.styleFrom(shape: const StadiumBorder()),
                     onPressed: () {
                       // Get.to(HomeScreen());
-                      registrationController.validated();
+                      loginController.validated();
                     },
                     child: const Text("LogIn")),
               ),
