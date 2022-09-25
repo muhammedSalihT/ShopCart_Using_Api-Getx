@@ -18,7 +18,7 @@ class RegistrationController extends GetxController {
     if (formKey.currentState!.validate()) {}
   }
 
-  chechRegister() async {
+  checkRegister() async {
     validated();
     final obj = SignUpModel(
         userMail: reigsterEmailControll.text.trim(),
