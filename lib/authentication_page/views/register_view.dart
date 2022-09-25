@@ -63,7 +63,7 @@ class RegisterView extends StatelessWidget {
                     style:
                         ElevatedButton.styleFrom(shape: const StadiumBorder()),
                     onPressed: () {
-                      registrationController.validated();
+                      registrationController.checkRegister();
                       // Get.to(VerificationScreeen());
                     },
                     child: const Text("Register")),
