@@ -16,9 +16,7 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 30,
-        ),
+        Box().sizedBox1,
         Form(
           key: registrationController.formKey,
           child: CoustemTextFormCard(
