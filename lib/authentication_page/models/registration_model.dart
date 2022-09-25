@@ -22,7 +22,7 @@ class SignUpRespoModel {
 
   factory SignUpRespoModel.fromJson(Map<String, dynamic> json) =>
       SignUpRespoModel(
-        status: json["status"] ?? "",
-        id: json["id"] ?? "",
-      );
+          status: json["status"] ?? "",
+          id: json["id"] ?? "",
+          message: json["message"] ?? "");
 }
