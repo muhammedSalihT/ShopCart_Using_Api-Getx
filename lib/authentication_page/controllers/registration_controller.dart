@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/authentication_page/api/registration_api.dart';
@@ -29,8 +27,9 @@ class RegistrationController extends GetxController {
           message: "Please enter OTP to complete",
           duration: Duration(seconds: 2),
         ));
-        final userId = responce.id;
-        Get.to(VerificationScreeen(userId: responce.id!,));
+        Get.to(VerificationScreeen(
+          userId: responce.id!,
+        ));
       } else {
         Get.showSnackbar(GetSnackBar(
           message: responce.message.toString(),
