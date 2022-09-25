@@ -22,16 +22,13 @@ class RegisterView extends StatelessWidget {
         Form(
           key: registrationController.formKey,
           child: CoustemTextFormCard(
-            height: 500,
+            height: 0,
             childrens: [
               const SizedBox(
                 height: 20,
               ),
               CustomTextForm(
-                  validator: (val) =>
-                      val != null
-                          ? null
-                          : 'Enter valid Email',
+                  validator: (val) => val != null ? null : 'Enter valid Email',
                   controller: registrationController.nameController,
                   hintText: "Name"),
               Box().sizedBox1,
@@ -44,26 +41,17 @@ class RegisterView extends StatelessWidget {
                   hintText: "Email"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (val) =>
-                      val != null 
-                          ? null
-                          : 'Enter valid Email',
+                  validator: (val) => val != null ? null : 'Enter valid Email',
                   controller: registrationController.numberControlletr,
                   hintText: "Phone Number"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (val) =>
-                      val != null 
-                          ? null
-                          : 'Enter valid Email',
+                  validator: (val) => val != null ? null : 'Enter valid Email',
                   controller: registrationController.passwordController,
                   hintText: "Passwoard"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (val) =>
-                      val != null 
-                          ? null
-                          : 'Enter valid Email',
+                  validator: (val) => val != null ? null : 'Enter valid Email',
                   controller: registrationController.confirmPasswordController,
                   hintText: "Confirm passwoard"),
               Box().sizedBox1,
@@ -83,12 +71,12 @@ class RegisterView extends StatelessWidget {
             ],
           ),
         ),
-        // Visibility(
-        //   visible: MediaQuery.of(context).viewInsets.bottom != 0,
-        //   child: const SizedBox(
-        //     height: 250,
-        //   ),
-        // )
+        Visibility(
+          visible: MediaQuery.of(context).viewInsets.bottom != 0,
+          child: const SizedBox(
+            height: 250,
+          ),
+        )
       ],
     );
   }
