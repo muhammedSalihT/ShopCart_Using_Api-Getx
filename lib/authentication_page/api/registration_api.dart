@@ -12,11 +12,12 @@ class RegistrationApi {
           await Dio(baseOptions).post(Url.signUp, data: signUpModel.toJson());
       if (responce.statusCode == 200) {
         return SignUpRespoModel.fromJson(responce.data);
-      }else{
+      } else {
         return SignUpRespoModel(message: 'Some unknown error occured');
       }
     } on DioError catch (e) {
-      log(e.message.toString());
+      // log(e.message.toString());
+      log('23');
       return SignUpRespoModel.fromJson(e.response!.data);
     } catch (e) {
       log('message');

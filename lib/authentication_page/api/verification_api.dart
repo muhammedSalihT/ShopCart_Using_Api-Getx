@@ -14,11 +14,13 @@ class VerificationApi {
           .post(Url.verification, data: data);
 
       if (responce.statusCode == 200) {
-        //  responce.data['message'];
         return responce.data;
       }
+    } on DioError catch (e) {
+      return e.response!.data;
     } catch (e) {
-      
+      return null;
     }
+    return null;
   }
 }
