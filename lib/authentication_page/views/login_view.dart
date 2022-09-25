@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                           ? null
                           : "Check Your Password",
                   hintText: "password"),
-              Box().sizedBox1,
+              Box().sizedBox2,
               Container(
                 width: 300,
                 decoration:
