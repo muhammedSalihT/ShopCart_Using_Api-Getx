@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final regiController = Get.find<RegistrationController>();
+  final registrationController = Get.put(RegistrationController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class LoginView extends StatelessWidget {
           height: 30,
         ),
         Form(
-          key: regiController.formKey,
+          key: registrationController.formKey,
           child: CoustemTextFormCard(
             height: 0,
             childrens: [
@@ -34,7 +34,12 @@ class LoginView extends StatelessWidget {
                           : "Enter valid email",
                   hintText: "Email"),
               Box().sizedBox1,
-              const CustomTextForm(hintText: "Passwoard"),
+              CustomTextForm(
+                  validator: (value) =>
+                      value != null && GetUtils.isEmail(value.trim())
+                          ? null
+                          : "Enter valid email",
+                  hintText: "password"),
               Box().sizedBox1,
               Container(
                 width: 300,
@@ -45,7 +50,7 @@ class LoginView extends StatelessWidget {
                         ElevatedButton.styleFrom(shape: const StadiumBorder()),
                     onPressed: () {
                       // Get.to(HomeScreen());
-                      regiController.validated();
+                      registrationController.validated();
                     },
                     child: const Text("LogIn")),
               ),
