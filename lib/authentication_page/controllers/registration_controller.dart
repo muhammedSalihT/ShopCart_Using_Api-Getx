@@ -16,34 +16,35 @@ class RegistrationController extends GetxController {
 
   validated() {
     if (formKey.currentState!.validate()) {}
+  }
 
-    checkRegister() async {
-      final obj = SignUpModel(
-          userMail: reigsterEmailControll.text.trim(),
-          userPassword: registerPasswordController.text.trim());
+  chechRegister() async {
+    validated();
+    final obj = SignUpModel(
+        userMail: reigsterEmailControll.text.trim(),
+        userPassword: registerPasswordController.text.trim());
 
-      final SignUpRespoModel responce = await RegistrationApi().signupUser(obj);
-      if (responce.status != null) {
-        if (responce.status == true) {
-          Get.showSnackbar(const GetSnackBar(
-            message: "Please enter OTP to complete",
-            duration: Duration(seconds: 2),
-          ));
-          Get.to(VerificationScreeen(
-            userId: responce.id!,
-          ));
-        } else {
-          Get.showSnackbar(GetSnackBar(
-            message: responce.message.toString(),
-            duration: const Duration(seconds: 2),
-          ));
-        }
-      } else {
+    final SignUpRespoModel responce = await RegistrationApi().signupUser(obj);
+    if (responce.status != null) {
+      if (responce.status == true) {
         Get.showSnackbar(const GetSnackBar(
-          message: "No network",
+          message: "Please enter OTP to complete",
           duration: Duration(seconds: 2),
         ));
+        Get.to(VerificationScreeen(
+          userId: responce.id!,
+        ));
+      } else {
+        Get.showSnackbar(GetSnackBar(
+          message: responce.message.toString(),
+          duration: const Duration(seconds: 2),
+        ));
       }
+    } else {
+      Get.showSnackbar(const GetSnackBar(
+        message: "No network",
+        duration: Duration(seconds: 2),
+      ));
     }
   }
 }
