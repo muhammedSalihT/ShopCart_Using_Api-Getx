@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/authentication_page/controllers/loginview_controller.dart';
 import 'package:project_shopcart/constends/box.dart';
+import 'package:project_shopcart/constends/colors.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
 
@@ -67,28 +68,14 @@ class LoginView extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
-                  children: const [
-                    SizedBox(
+                  children: [
+                    const SizedBox(
                       width: 20,
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Divider(
-                          thickness: 1,
-                        ),
-                      ),
-                    ),
-                    Text('or'),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Divider(
-                          thickness: 1,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
+                    dividerLine(),
+                    const Text('or'),
+                    dividerLine(),
+                    const SizedBox(
                       width: 20,
                     ),
                   ],
@@ -149,6 +136,18 @@ class LoginView extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  Expanded dividerLine() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Divider(
+          color: ConstColor().whiteColor,
+          thickness: 1,
+        ),
+      ),
     );
   }
 }
