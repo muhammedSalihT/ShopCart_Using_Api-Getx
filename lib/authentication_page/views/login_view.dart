@@ -42,7 +42,7 @@ class LoginView extends StatelessWidget {
                   hintText: "password"),
               Box().sizedBox2,
               Container(
-                width: 300,
+                width: 250,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                 child: ElevatedButton(
