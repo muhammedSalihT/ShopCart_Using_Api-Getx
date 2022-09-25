@@ -5,6 +5,6 @@ class Box {
     height: 10,
   );
   Widget sizedBox2 = const SizedBox(
-    height: 30,
+    height: 20,
   );
 }
