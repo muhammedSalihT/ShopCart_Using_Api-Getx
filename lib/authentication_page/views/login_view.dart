@@ -17,9 +17,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 30,
-        ),
+        Box().sizedBox1,
         Form(
           key: loginController.formKey,
           child: CoustemTextFormCard(
@@ -69,20 +67,21 @@ class LoginView extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   children: [
-                    const SizedBox(
-                      width: 20,
-                    ),
+                    Box().sizedBox1,
                     dividerLine(),
                     Text(
                       'or',
                       style: TextStyle(color: ConstColor().whiteColor),
                     ),
                     dividerLine(),
-                    const SizedBox(
-                      width: 20,
-                    ),
+                    Box().sizedBox1,
                   ],
                 ),
+              ),
+              Box().sizedBox1,
+              Text(
+                'Login With',
+                style: TextStyle(color: ConstColor().brightWhite),
               ),
               Padding(
                 padding: const EdgeInsets.all(25.0),
@@ -92,39 +91,20 @@ class LoginView extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  topLeft: Radius.circular(20)),
-                            ),
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              "assets/google_logo.png",
-                              height: 20,
-                            )),
+                      Image.asset(
+                        "assets/google_logo.png",
+                        height: 40,
                       ),
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(20),
-                                topRight: Radius.circular(20)),
-                          ),
-                          alignment: Alignment.center,
-                          child: const Text('Login with google',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400)),
-                        ),
+                      const Icon(
+                        Icons.facebook,
+                        size: 50,
                       ),
+                      const Icon(
+                        Icons.phone_android,
+                        size: 50,
+                      )
                     ],
                   ),
                 ),
