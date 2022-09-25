@@ -24,7 +24,9 @@ class AuthScreen extends StatelessWidget {
                 width: size.width,
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 143, 142, 142),
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30)),
                 ),
                 child: DefaultTabController(
                   length: 2,
@@ -60,7 +62,6 @@ class AuthScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: TabBarView(
-                          physics: const BouncingScrollPhysics(),
                           children: [const LoginView(), RegisterView()],
                         ),
                       ),

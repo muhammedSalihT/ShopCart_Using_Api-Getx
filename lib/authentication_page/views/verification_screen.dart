@@ -6,14 +6,16 @@ import 'package:sms_autofill/sms_autofill.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
 class VerificationScreeen extends GetView<VerificationController> {
-  VerificationScreeen({Key? key}) : super(key: key);
+  VerificationScreeen({Key? key, required this.userId}) : super(key: key);
 
   @override
   final controller = Get.put(VerificationController());
   final regisController = Get.find<RegistrationController>();
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
@@ -124,7 +126,7 @@ class VerificationScreeen extends GetView<VerificationController> {
         ),
         bottomSheet: GestureDetector(
           onTap: () {
-            
+            controller.verifyUser(userId);
           },
           child: Container(
             margin: const EdgeInsets.all(10),
