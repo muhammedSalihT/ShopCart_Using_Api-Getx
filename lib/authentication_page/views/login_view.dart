@@ -53,10 +53,7 @@ class LoginView extends StatelessWidget {
                       // Get.to(HomeScreen());
                       loginController.validated();
                     },
-                    child: Text(
-                      "LogIn",
-                      style: TextStyle(color: ConstColor().whiteColor),
-                    )),
+                    child: const Text("LogIn")),
               ),
               TextButton(
                 onPressed: () {},
@@ -76,7 +73,10 @@ class LoginView extends StatelessWidget {
                       width: 20,
                     ),
                     dividerLine(),
-                    const Text('or'),
+                    Text(
+                      'or',
+                      style: TextStyle(color: ConstColor().whiteColor),
+                    ),
                     dividerLine(),
                     const SizedBox(
                       width: 20,
