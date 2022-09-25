@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/authentication_page/controllers/loginview_controller.dart';
-import 'package:project_shopcart/authentication_page/controllers/registration_controller.dart';
 import 'package:project_shopcart/constends/box.dart';
 import 'package:project_shopcart/widgets/custom_textformcard.dart';
 import 'package:project_shopcart/widgets/custom_textform.dart';
@@ -32,14 +31,14 @@ class LoginView extends StatelessWidget {
                   validator: (value) =>
                       value != null && GetUtils.isEmail(value.trim())
                           ? null
-                          : "Enter valid email",
+                          : "Check Your Email",
                   hintText: "Email"),
               Box().sizedBox1,
               CustomTextForm(
                   validator: (value) =>
-                      value != null && GetUtils.isEmail(value.trim())
+                      value != null && GetUtils.isLengthBetween(value, 3, 10)
                           ? null
-                          : "Enter valid email",
+                          : "Check Your Password",
                   hintText: "password"),
               Box().sizedBox1,
               Container(
