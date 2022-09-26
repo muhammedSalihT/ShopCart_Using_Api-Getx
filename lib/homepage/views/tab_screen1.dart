@@ -10,8 +10,7 @@ class TabScreen1 extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           const HomeCategoryBanner(text: "Recently Viewed Items"),
           SingleChildScrollView(
@@ -74,30 +73,31 @@ class TabScreen1 extends StatelessWidget {
           LimitedBox(
             maxHeight: 500,
             child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, childAspectRatio: 1 / 1),
-                itemCount: 8,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(2),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, childAspectRatio: 1 / 1),
+              itemCount: 8,
+              itemBuilder: (context, index) {
+                return Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.cyanAccent)),
+                  child: Container(
+                    padding: const EdgeInsets.all(3),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.cyanAccent)),
+                        border: Border.all(color: Colors.tealAccent)),
                     child: Container(
-                      padding: const EdgeInsets.all(3),
+                      height: 50,
+                      width: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.tealAccent)),
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage("assets/images.jpg"))),
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images.jpg"))),
                     ),
-                  );
-                }),
+                  ),
+                );
+              },
+            ),
           )
         ],
       ),
