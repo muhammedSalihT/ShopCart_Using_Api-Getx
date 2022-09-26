@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_shopcart/authentication_page/views/authentication_screen.dart';
+import 'package:project_shopcart/homepage/views/home_screen.dart';
 import 'package:project_shopcart/onbording_pages/controller/onbording_controller.dart';
 import 'package:project_shopcart/onbording_pages/view/onbordingtext_widget.dart';
 
@@ -111,7 +111,7 @@ class OnBordingScreen extends StatelessWidget {
         onPressed: () {
           log('message');
           Get.to(
-            const AuthScreen(),
+            HomeScreen(),
             transition: Transition.circularReveal,
             duration: const Duration(seconds: 1),
           );
