@@ -9,7 +9,7 @@ class GlobalTab extends StatelessWidget {
       children: [
         Container(
           height: 100,
-          color: Colors.grey,
+          color: Color.fromARGB(255, 231, 4, 4),
         )
       ],
     );
