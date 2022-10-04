@@ -26,32 +26,38 @@ class RegisterView extends StatelessWidget {
                 height: 20,
               ),
               CustomTextForm(
-                  validator: (val) => val != null ? null : 'Enter valid Email',
+                  validator: (value) =>
+                      GetUtils.isUsername(value!) ? null : "Enter Correct Name",
                   controller: registrationController.nameController,
                   hintText: "Name"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (val) =>
-                      val != null && GetUtils.isEmail(val.trim())
-                          ? null
-                          : 'Enter valid Email',
+                  validator: (value) =>
+                      GetUtils.isEmail(value!) ? null : "Enter Correct Email",
                   controller: registrationController.reigsterEmailControll,
                   hintText: "Email"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (val) => val != null ? null : 'Enter valid Email',
+                  validator: (value) => GetUtils.isLengthBetween(value, 10, 10)
+                      ? null
+                      : "Enter Correct Phone Number",
                   controller: registrationController.numberControlletr,
                   hintText: "Phone Number"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (val) => val != null ? null : 'Enter valid Email',
+                  validator: (value) => GetUtils.isLengthBetween(value, 5, 5)
+                      ? null
+                      : "Enter Correct Password",
                   controller: registrationController.passwordController,
                   hintText: "Passwoard"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (val) => val != null ? null : 'Enter valid Email',
+                  validator: (value) =>
+                      value == registrationController.passwordController.text
+                          ? null
+                          : "Password are not match",
                   controller: registrationController.confirmPasswordController,
-                  hintText: "Confirm passwoard"),
+                  hintText: "Confirm password"),
               Box().sizedBox1,
               Container(
                 width: 300,
