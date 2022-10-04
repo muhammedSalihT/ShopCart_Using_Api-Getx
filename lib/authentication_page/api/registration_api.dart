@@ -5,23 +5,23 @@ import 'package:project_shopcart/authentication_page/models/registration_model.d
 
 class RegistrationApi {
   BaseOptions baseOptions = BaseOptions(baseUrl: Url.baseUrl);
-  Future<SignUpRespoModel> signupUser(SignUpModel signUpModel) async {
+  Future<SignUpResponseModel> signupUser(ResUser userModel) async {
     log('message1');
     try {
       final responce =
-          await Dio(baseOptions).post(Url.signUp, data: signUpModel.toJson());
+          await Dio(baseOptions).post(Url.signUp, data: userModel.toJson());
       if (responce.statusCode == 200) {
-        return SignUpRespoModel.fromJson(responce.data);
+        return SignUpResponseModel.fromJson(responce.data);
       } else {
-        return SignUpRespoModel(message: 'Some unknown error occured');
+        return SignUpResponseModel(msg: responce.statusMessage);
       }
     } on DioError catch (e) {
       // log(e.message.toString());
-      log('23');
-      return SignUpRespoModel.fromJson(e.response!.data);
+      log(e.response.toString());
+      return SignUpResponseModel(msg: e.response.toString());
     } catch (e) {
       log('message');
-      return SignUpRespoModel(message: e.toString());
+      return SignUpResponseModel(msg: e.toString());
     }
   }
 }
