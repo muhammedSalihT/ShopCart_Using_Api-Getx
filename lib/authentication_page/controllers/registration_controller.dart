@@ -21,6 +21,7 @@ class RegistrationController extends GetxController {
   checkRegister() async {
     validated();
     final userModel = ResUser(
+      token: "",
       id: '',
       name: nameController.text,
       password: passwordController.text.trim(),
