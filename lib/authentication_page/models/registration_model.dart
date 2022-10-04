@@ -26,6 +26,7 @@ class SignUpResponseModel {
 
 class ResUser {
   ResUser({
+    this.token,
     this.name,
     this.email,
     this.phoneNumber,
@@ -36,6 +37,7 @@ class ResUser {
   });
 
   String? name;
+  String? token;
   String? email;
   int? phoneNumber;
   String? password;
@@ -44,6 +46,7 @@ class ResUser {
   int? v;
 
   factory ResUser.fromJson(Map<String, dynamic> json) => ResUser(
+        token: json["token"],
         name: json["name"] ?? "",
         email: json["email"] ?? "",
         phoneNumber: json["phone_number"] ?? "",
@@ -54,6 +57,7 @@ class ResUser {
       );
 
   Map<String, dynamic> toJson() => {
+        "token": token,
         "name": name,
         "email": email,
         "phone_number": phoneNumber,
