@@ -1,28 +1,65 @@
-class SignUpModel {
-  SignUpModel({
-    required this.userMail,
-    required this.userPassword,
+class SignUpResponseModel {
+  SignUpResponseModel({
+    this.status,
+    this.resUser,
+    this.msg,
   });
 
-  String userMail;
-  String userPassword;
+  bool? status;
+  ResUser? resUser;
+  String? msg;
+
+  factory SignUpResponseModel.fromJson(Map<String, dynamic> json) =>
+      SignUpResponseModel(
+        status: json["status"],
+        resUser:
+            json["resUser"] == null ? null : ResUser.fromJson(json["resUser"]),
+        msg: json["msg"] ?? "",
+      );
 
   Map<String, dynamic> toJson() => {
-        "user_mail": userMail,
-        "user_password": userPassword,
+        "status": status,
+        "resUser": resUser == null ? null : resUser!.toJson(),
+        "msg": msg,
       };
 }
 
-class SignUpRespoModel {
-  SignUpRespoModel({this.status, this.id, this.message});
+class ResUser {
+  ResUser({
+    this.name,
+    this.email,
+    this.phoneNumber,
+    this.password,
+    this.type,
+    this.id,
+    this.v,
+  });
 
-  bool? status;
+  String? name;
+  String? email;
+  int? phoneNumber;
+  String? password;
+  String? type;
   String? id;
-  String? message;
+  int? v;
 
-  factory SignUpRespoModel.fromJson(Map<String, dynamic> json) =>
-      SignUpRespoModel(
-          status: json["status"] ?? "",
-          id: json["id"] ?? "",
-          message: json["message"] ?? "");
+  factory ResUser.fromJson(Map<String, dynamic> json) => ResUser(
+        name: json["name"] ?? "",
+        email: json["email"] ?? "",
+        phoneNumber: json["phone_number"] ?? "",
+        password: json["password"] ?? "",
+        type: json["type"] ?? "",
+        id: json["_id"] ?? "",
+        v: json["__v"] ?? "",
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "email": email,
+        "phone_number": phoneNumber,
+        "password": password,
+        "type": type,
+        "_id": id,
+        "__v": v,
+      };
 }
