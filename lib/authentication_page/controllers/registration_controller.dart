@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/authentication_page/api/registration_api.dart';
 import 'package:project_shopcart/authentication_page/models/registration_model.dart';
-import 'package:project_shopcart/authentication_page/views/verification_screen.dart';
+import 'package:project_shopcart/homepage/views/home_screen.dart';
 
 class RegistrationController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -20,30 +20,32 @@ class RegistrationController extends GetxController {
 
   checkRegister() async {
     validated();
-    final obj = SignUpModel(
-        userMail: reigsterEmailControll.text.trim(),
-        userPassword: registerPasswordController.text.trim());
-
-    final SignUpRespoModel responce = await RegistrationApi().signupUser(obj);
+    final userModel = ResUser(
+      id: '',
+      name: nameController.text,
+      password: passwordController.text.trim(),
+      email: reigsterEmailControll.text.trim(),
+      type: '',
+    );
+    final SignUpResponseModel responce =
+        await RegistrationApi().signupUser(userModel);
     if (responce.status != null) {
       if (responce.status == true) {
-        Get.showSnackbar(const GetSnackBar(
-          message: "Please enter OTP to complete",
-          duration: Duration(seconds: 2),
+        Get.showSnackbar(GetSnackBar(
+          message: responce.msg,
+          duration: const Duration(seconds: 2),
         ));
-        Get.to(VerificationScreeen(
-          userId: responce.id!,
-        ));
+        Get.to(HomeScreen());
       } else {
         Get.showSnackbar(GetSnackBar(
-          message: responce.message.toString(),
+          message: responce.msg,
           duration: const Duration(seconds: 2),
         ));
       }
     } else {
-      Get.showSnackbar(const GetSnackBar(
-        message: "No network",
-        duration: Duration(seconds: 2),
+      Get.showSnackbar(GetSnackBar(
+        message: responce.msg.toString(),
+        duration: const Duration(seconds: 2),
       ));
     }
   }
