@@ -21,7 +21,6 @@ class RegistrationController extends GetxController {
   checkRegister() async {
     validated();
     final userModel = ResUser(
-      token: "",
       id: '',
       name: nameController.text,
       password: passwordController.text.trim(),
@@ -39,7 +38,7 @@ class RegistrationController extends GetxController {
         Get.to(HomeScreen());
       } else {
         Get.showSnackbar(GetSnackBar(
-          message: responce.msg,
+          message: responce.msg.toString(),
           duration: const Duration(seconds: 2),
         ));
       }
@@ -49,5 +48,11 @@ class RegistrationController extends GetxController {
         duration: const Duration(seconds: 2),
       ));
     }
+  }
+
+  @override
+  void onClose() {
+    RegistrationController().dispose();
+    super.onClose();
   }
 }

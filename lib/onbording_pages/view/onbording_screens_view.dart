@@ -1,10 +1,13 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_shopcart/homepage/views/home_screen.dart';
+import 'package:project_shopcart/authentication_page/views/authentication_screen.dart';
 import 'package:project_shopcart/onbording_pages/controller/onbording_controller.dart';
 import 'package:project_shopcart/onbording_pages/view/onbordingtext_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBordingScreen extends StatelessWidget {
   OnBordingScreen({Key? key}) : super(key: key);
@@ -108,13 +111,20 @@ class OnBordingScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          log('message');
-          Get.to(
-            HomeScreen(),
-            transition: Transition.circularReveal,
-            duration: const Duration(seconds: 1),
-          );
+        onPressed: () async {
+          try {
+            final SharedPreferences prefs =
+                await SharedPreferences.getInstance();
+            prefs.setBool("isScreen", true);
+            Get.to(
+              const AuthScreen(),
+              transition: Transition.circularReveal,
+              duration: const Duration(seconds: 1),
+            );
+          } catch (e) {
+            e.toString();
+            log(e.toString());
+          }
         },
         label: const Text("Skip"),
       ),

@@ -27,17 +27,16 @@ class LoginView extends StatelessWidget {
                 height: 20,
               ),
               CustomTextForm(
+                  controller: loginController.signInEmailControll,
                   validator: (value) =>
-                      value != null && GetUtils.isEmail(value.trim())
-                          ? null
-                          : "Check Your Email",
+                      GetUtils.isEmail(value!) ? null : "Check Email",
                   hintText: "Email"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (value) =>
-                      value != null && GetUtils.isLengthBetween(value, 3, 10)
-                          ? null
-                          : "Check Your Password",
+                  controller: loginController.signInPasswordController,
+                  validator: (value) => GetUtils.isLengthBetween(value, 3, 10)
+                      ? null
+                      : "Check  Password",
                   hintText: "password"),
               Box().sizedBox2,
               Container(
@@ -48,8 +47,7 @@ class LoginView extends StatelessWidget {
                     style:
                         ElevatedButton.styleFrom(shape: const StadiumBorder()),
                     onPressed: () {
-                      // Get.to(HomeScreen());
-                      loginController.validated();
+                      loginController.checkLoginUser();
                     },
                     child: const Text("LogIn")),
               ),

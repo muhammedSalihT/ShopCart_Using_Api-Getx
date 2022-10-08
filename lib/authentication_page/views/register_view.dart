@@ -45,17 +45,16 @@ class RegisterView extends StatelessWidget {
                   hintText: "Phone Number"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (value) => GetUtils.isLengthBetween(value, 5, 5)
+                  validator: (value) => GetUtils.isLengthBetween(value, 3, 10)
                       ? null
                       : "Enter Correct Password",
                   controller: registrationController.passwordController,
                   hintText: "Passwoard"),
               Box().sizedBox1,
               CustomTextForm(
-                  validator: (value) =>
-                      value == registrationController.passwordController.text
-                          ? null
-                          : "Password are not match",
+                  validator: (value) => GetUtils.isLengthBetween(value, 3, 10)
+                      ? null
+                      : "Re-Enter Password",
                   controller: registrationController.confirmPasswordController,
                   hintText: "Confirm password"),
               Box().sizedBox1,

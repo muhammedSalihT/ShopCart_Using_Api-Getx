@@ -25,6 +25,7 @@ class CustomTextForm extends StatelessWidget {
     return SizedBox(
       width: 320,
       child: TextFormField(
+        textInputAction: TextInputAction.next,
         controller: controller,
         obscureText: hideText,
         validator: validator,

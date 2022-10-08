@@ -4,4 +4,7 @@ class Url {
   static String signIn = "api/signIn";
   static String verification = "account/verify-email-otp";
   static String mainCategorie = "api/getAllMainCategories";
+  static String subCategorie = "api/getAllSubCategories/";
+  static String trending = "api/getTrending/";
+  static String budget = "api/getbudget/";
 }

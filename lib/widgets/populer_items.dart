@@ -1,10 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:project_shopcart/homepage/controllers/trending_product_controller.dart';
 
 class PopulerItems extends StatelessWidget {
-  const PopulerItems({
+  PopulerItems({
     Key? key,
   }) : super(key: key);
+
+  final trendingController = Get.find<TrendingProductController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,35 +23,56 @@ class PopulerItems extends StatelessWidget {
           viewportFraction: .65,
         ),
         items: List.generate(
-          5,
+          trendingController.trendingList.length,
           (index) => Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: [
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      "assets/images.jpg",
-                    ),
-                  ),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(trendingController
+                          .trendingList[index].images!
+                          .toString())),
                 ),
               ),
-              const Positioned(
+              Positioned(
                 bottom: 20,
                 child: Text(
-                  "Smart Watch",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                  trendingController.trendingList[index].productName.toString(),
+                  style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
-              const Positioned(
+              Positioned(
                 bottom: 0,
-                child: Text(
-                  "Get It Rs 499/",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      trendingController.trendingList[index].productPrize
+                          .toString(),
+                      style: const TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          fontSize: 20,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      width: 80,
+                    ),
+                    Text(
+                      trendingController.trendingList[index].offerPrize
+                          .toString(),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
               )
             ],

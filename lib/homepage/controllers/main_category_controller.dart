@@ -17,12 +17,13 @@ class MainCategoryController extends GetxController {
     if (responce != null) {
       mainCategoryList.clear();
       for (var element in responce.data!) {
-        print(element);
+        print('hihlo');
         mainCategoryList.add(element);
       }
     }
     update();
   }
+  
 
   @override
   void onInit() {
@@ -30,10 +31,10 @@ class MainCategoryController extends GetxController {
     super.onInit();
   }
 
-  Widget getScreen(String? screen) {
+  Widget getScreen(String? screen,) {
     switch (screen) {
       case "Shirts":
-        return const TabScreen1();
+        return TabScreen1();
       case "Jeans":
         return const TabScreen2();
       case "Tracksuits":
