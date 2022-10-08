@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_shopcart/splash_screen/controllers/spalash_screenc_controller.dart';
 import 'package:project_shopcart/splash_screen/views/splash_screen.dart';
 
 void main() {
+  Get.put(SplashScreenController());
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
