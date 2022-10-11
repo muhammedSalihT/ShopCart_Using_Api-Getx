@@ -2,13 +2,12 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:project_shopcart/homepage/api/sub_categorie_api.dart';
-import 'package:project_shopcart/homepage/controllers/main_category_controller.dart';
 import 'package:project_shopcart/homepage/models/sub_categorie_model.dart';
 
 class SubCategorieController extends GetxController {
-  final mainCategorie = Get.find<MainCategoryController>();
+  // final mainCategorie = Get.find<MainCategoryController>();
 
-  RxString categorieId = "63371b7851acef60a5f1f67c".obs;
+  RxString categorieId = "TopWears".obs;
 
   @override
   void onInit() {
