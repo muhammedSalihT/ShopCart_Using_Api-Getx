@@ -5,11 +5,11 @@ import 'package:project_shopcart/homepage/models/trending_model.dart';
 
 class TrendingApi {
   Future<GetTrendingModel?> getTrendingProduct(
-      {required String categorieId}) async {
+      {required String tappedCategorie}) async {
     try {
       final responce =
-          await Dio().get(Url.baseUrl + Url.trending + categorieId);
-      log(Url.baseUrl + Url.subCategorie + categorieId);
+          await Dio().get(Url.baseUrl + Url.trending + tappedCategorie);
+      log(Url.baseUrl + Url.subCategorie + tappedCategorie);
       if (responce.statusCode == 200) {
         final datalist = GetTrendingModel.fromJson(responce.data);
         log("======================");

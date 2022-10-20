@@ -1,7 +1,6 @@
 import 'dart:developer';
-
 import 'package:get/get.dart';
-import 'package:project_shopcart/authentication_page/views/authentication_screen.dart';
+import 'package:project_shopcart/homepage/views/home_screen.dart';
 import 'package:project_shopcart/onbording_pages/view/onbording_screens_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,7 +13,7 @@ class SplashScreenController extends GetxController {
       await Future.delayed(
         const Duration(seconds: 5),
       );
-      Get.offAll(const AuthScreen());
+      Get.offAll( HomeScreen());
     } else {
       await Future.delayed(
         const Duration(seconds: 5),

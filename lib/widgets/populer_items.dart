@@ -33,7 +33,7 @@ class PopulerItems extends StatelessWidget {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(trendingController
-                          .trendingList[index].images!
+                          .trendingList[index].images!.img1
                           .toString())),
                 ),
               ),

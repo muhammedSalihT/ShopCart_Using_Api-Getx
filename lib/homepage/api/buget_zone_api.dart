@@ -5,13 +5,14 @@ import 'package:project_shopcart/homepage/models/budget_model.dart';
 
 class BudgetApi {
   Future<GetBudgetModel?> getBudgetProduct(
-      {required String categorieId}) async {
+      {required String categorieId, required String prize}) async {
     try {
-      final responce = await Dio().get(Url.baseUrl + Url.budget + categorieId);
-      log(Url.baseUrl + Url.subCategorie + categorieId);
+      final responce =
+          await Dio().get("${Url.baseUrl}${Url.budget}$categorieId/$prize");
+      log("${Url.baseUrl}${Url.budget}$categorieId/$prize");
       if (responce.statusCode == 200) {
         final datalist = GetBudgetModel.fromJson(responce.data);
-        log("======================");
+        log("=============================");
         log(datalist.budget!.first.productName.toString());
         return datalist;
       } else {

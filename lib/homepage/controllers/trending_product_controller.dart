@@ -1,23 +1,26 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:project_shopcart/homepage/api/Trending_prod_api.dart';
+import 'package:project_shopcart/homepage/controllers/sub_categorie_controller.dart';
 import 'package:project_shopcart/homepage/models/trending_model.dart';
+import 'package:project_shopcart/homepage/responsive/dimensions.dart';
 
 class TrendingProductController extends GetxController {
-  RxString categorieId = "63371b3851acef60a5f1f678".obs;
+  final subController = Get.find<SubCategorieController>();
 
   @override
   void onInit() {
     log("initialise");
-    getTrendingData(categorieId: categorieId.value);
+    getTrendingData(tappedCategorie.value);
+    ever(tappedCategorie, getTrendingData);
     super.onInit();
   }
 
   List<Trending> trendingList = [];
 
-  getTrendingData({required String categorieId}) async {
-    final responce =
-        await TrendingApi().getTrendingProduct(categorieId: categorieId);
+  getTrendingData(String tappedCategorie) async {
+    final responce = await TrendingApi()
+        .getTrendingProduct(tappedCategorie:tappedCategorie);
     if (responce != null) {
       log("get responce${responce.toString()}");
       trendingList.clear();

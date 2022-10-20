@@ -1,44 +1,59 @@
 class SubCategorieModel {
-  SubCategorieModel({
-    this.data,
-    this.messege,
-  });
+    SubCategorieModel({
+        this.data,
+        this.msg,
+    });
 
-  List<GetAllSubCategorie>? data;
-  String? messege;
+    List<GetAllSubCategorie>? data;
+    String? msg;
 
-  factory SubCategorieModel.fromJson(Map<String, dynamic> json) =>
-      SubCategorieModel(
-        data: List<GetAllSubCategorie>.from(
-            json["data"].map((x) => GetAllSubCategorie.fromJson(x))),
-      );
+    factory SubCategorieModel.fromJson(Map<String, dynamic> json) => SubCategorieModel(
+        data: List<GetAllSubCategorie>.from(json["data"].map((x) => GetAllSubCategorie.fromJson(x))),
+        msg: json["msg"],
+    );
+
 }
 
 class GetAllSubCategorie {
-  GetAllSubCategorie({
-    this.id,
-    this.subCategorieName,
-    this.subCategorieImage,
-    this.v,
-  });
+    GetAllSubCategorie({
+        this.subImage,
+        this.id,
+        this.categoryName,
+        this.subCategorieName,
+        this.v,
+    });
 
-  String? id;
-  String? subCategorieName;
-  String? subCategorieImage;
-  int? v;
+    SubImage? subImage;
+    String? id;
+    String? categoryName;
+    String? subCategorieName;
+    int? v;
 
-  factory GetAllSubCategorie.fromJson(Map<String, dynamic> json) =>
-      GetAllSubCategorie(
+    factory GetAllSubCategorie.fromJson(Map<String, dynamic> json) => GetAllSubCategorie(
+        subImage: SubImage.fromJson(json["subImage"]),
         id: json["_id"],
+        categoryName: json["categoryName"],
         subCategorieName: json["subCategorieName"],
-        subCategorieImage: json["subCategorieImage"],
         v: json["__v"],
-      );
+    );
+}
 
-  Map<String, dynamic> toJson() => {
-        "_id": id,
-        "subCategorieName": subCategorieName,
-        "subCategorieImage": subCategorieImage,
-        "__v": v,
-      };
+class SubImage {
+    SubImage({
+        this.data,
+        this.contentType,
+    });
+
+    String? data;
+    String? contentType;
+
+    factory SubImage.fromJson(Map<String, dynamic> json) => SubImage(
+        data: json["data"],
+        contentType: json["contentType"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "data": data,
+        "contentType": contentType,
+    };
 }

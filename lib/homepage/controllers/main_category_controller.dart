@@ -40,13 +40,13 @@ class MainCategoryController extends GetxController {
     String? screen,
   ) {
     switch (screen) {
-      case "Shirts":
+      case "TopWears":
         return TabScreen1();
-      case "Jeans":
-        return const TabScreen2();
-      case "Tracksuits":
+      case "BottomWears":
+        return TabScreen2();
+      case "FootWears":
         return const TabScreen3();
-      case "Smart Watches":
+      case "Watches":
         return const TabScreen4();
       default:
         return const GlobalTab();

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:animations/animations.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +5,12 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/homepage/controllers/budgetzone_controller.dart';
 import 'package:project_shopcart/homepage/controllers/sub_categorie_controller.dart';
-import 'package:project_shopcart/homepage/controllers/trending_product_controller.dart';
 import 'package:project_shopcart/widgets/home_category_banner.dart';
 import 'package:project_shopcart/widgets/populer_items.dart';
 
-class TabScreen1 extends StatelessWidget {
+class TabScreen1 extends GetView {
   TabScreen1({Key? key}) : super(key: key);
 
-  final subCategorieController = Get.find<SubCategorieController>();
-  final productController = Get.find<TrendingProductController>();
   final budgetProductController = Get.find<BudgetProductController>();
 
   @override
@@ -27,14 +23,14 @@ class TabScreen1 extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: SizedBox(
-            height: 110,
+            height: size.height * .15,
             child: Row(
               children: List.generate(
                 5,
                 (index) => Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Container(
-                    height: 100,
+                    height: size.height * .14,
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -125,7 +121,7 @@ class TabScreen1 extends StatelessWidget {
             children: [
               Container(
                 color: const Color.fromARGB(255, 45, 44, 44),
-                height: size.height * .61,
+                height: size.height * .346,
                 child: GetBuilder<SubCategorieController>(
                     builder: (subCategorieController) {
                   return Padding(
@@ -144,7 +140,6 @@ class TabScreen1 extends StatelessWidget {
                               childAspectRatio: 0.86,
                               crossAxisSpacing: 10),
                       itemBuilder: (context, index) {
-                        log("${subCategorieController.subCategorieList[index].subCategorieName}");
                         return AnimationConfiguration.staggeredGrid(
                           position: 2,
                           columnCount: 3,
@@ -174,11 +169,14 @@ class TabScreen1 extends StatelessWidget {
                                       Expanded(
                                         child: Hero(
                                           tag: "$index",
-                                          child: Image(
-                                            image: NetworkImage(
-                                                "${subCategorieController.subCategorieList[index].subCategorieImage}"),
-                                            fit: BoxFit.cover,
-                                          ),
+                                          child: subCategorieController
+                                                  .subCategorieList.isEmpty
+                                              ? const CircularProgressIndicator()
+                                              : Image(
+                                                  image: NetworkImage(
+                                                      "${subCategorieController.subCategorieList[index].subImage!.data}"),
+                                                  fit: BoxFit.cover,
+                                                ),
                                         ),
                                       ),
                                       Center(
@@ -201,82 +199,164 @@ class TabScreen1 extends StatelessWidget {
                 }),
               ),
               const HomeCategoryBanner(text: "Budget-Zone"),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      color: Colors.grey,
-                      height: size.height * 0.25,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            bottomLeft: Radius.circular(30)),
+                        color: Colors.grey,
+                      ),
+                      height: size.height * 0.18,
+                      width: size.width * .55,
                       child: Column(
-                        children: const [
-                          Text("Under"),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Under",
+                            style: TextStyle(
+                                fontSize: 25, fontStyle: FontStyle.italic),
+                          ),
+                          const Text(
+                            "Rs 699/*",
+                            style: TextStyle(
+                                fontSize: 25, fontStyle: FontStyle.italic),
+                          ),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("Shop Now"))
                         ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: SizedBox(
-                      height: size.height * 0.25,
-                      child: Swiper(
-                        autoplay: true,
-                        itemCount: budgetProductController.budgetList.length,
-                        itemBuilder: (context, index) {
-                          final data =
-                              budgetProductController.budgetList[index];
-                          return GridTile(
-                            footer: Container(
-                              height: 30,
-                              color: const Color.fromARGB(96, 255, 255, 255),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                      flex: 1,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: Text(
-                                          "Orginal Prize${data.offerPrize.toString()}",
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.red,
-                                              decoration:
-                                                  TextDecoration.lineThrough),
-                                        ),
-                                      )),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Offer Prize${data.offerPrize.toString()}",
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Image.network(
-                                  fit: BoxFit.cover, data.images!),
-                            ),
-                          );
-                        },
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                            topRight: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(30),
+                                  bottomRight: Radius.circular(30))),
+                          height: size.height * 0.18,
+                          width: size.width * .45,
+                          child: Swiper(
+                            duration: 3000,
+                            itemWidth: size.width * .45,
+                            itemHeight: size.height * 0.18,
+                            itemCount:
+                                budgetProductController.budgetList2.length,
+                            layout: SwiperLayout.TINDER,
+                            autoplay: true,
+                            itemBuilder: (context, index) {
+                              return GridTile(
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                        topRight: Radius.circular(30),
+                                        bottomRight: Radius.circular(30)),
+                                    child: GetBuilder<BudgetProductController>(
+                                        builder: (budgetProductController) {
+                                      return Image.network(
+                                        budgetProductController
+                                            .budgetList2[index].images!.img1
+                                            .toString(),
+                                        fit: BoxFit.cover,
+                                      );
+                                    }),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(30),
+                          topLeft: Radius.circular(30)),
+                      child: SizedBox(
+                        height: size.height * 0.18,
+                        width: size.width * .4,
+                        child: GetBuilder<BudgetProductController>(
+                            builder: (budgetProductController) {
+                          return Swiper(
+                            duration: 3000,
+                            itemWidth: size.width * .45,
+                            itemHeight: size.height * 0.18,
+                            itemCount:
+                                budgetProductController.budgetList1.length,
+                            layout: SwiperLayout.TINDER,
+                            autoplay: true,
+                            itemBuilder: (context, index) {
+                              return GridTile(
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(30),
+                                        bottomLeft: Radius.circular(30)),
+                                    child: Image.network(
+                                      budgetProductController
+                                          .budgetList1[index].images!.img1
+                                          .toString(),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(30),
+                                bottomRight: Radius.circular(30))),
+                        height: size.height * 0.18,
+                        width: size.width * .6,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Under",
+                              style: TextStyle(
+                                  fontSize: 25, fontStyle: FontStyle.italic),
+                            ),
+                            const Text(
+                              "Rs 499/*",
+                              style: TextStyle(
+                                  fontSize: 25, fontStyle: FontStyle.italic),
+                            ),
+                            ElevatedButton(
+                                onPressed: () {}, child: const Text("Shop Now"))
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
