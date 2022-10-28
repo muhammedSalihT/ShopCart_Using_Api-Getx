@@ -23,9 +23,13 @@ class RegistrationController extends GetxController {
   ResUser? currUser;
   final storage = const FlutterSecureStorage();
   final String USER_ID = 'user.id';
+  final String User_Number ='user.phoneNumber';
+  final String User_name = 'user.email';
 
   saveUser(ResUser user) {
     storage.write(key: USER_ID, value: user.id);
+    storage.write(key: User_Number, value: user.phoneNumber.toString());
+    storage.write(key: User_name, value: user.email);
     update();
   }
 
@@ -51,8 +55,8 @@ class RegistrationController extends GetxController {
           message: responce.msg,
           duration: const Duration(seconds: 2),
         ));
-         saveUser(responce.resUser!);
-        Get.off(() =>GlobalScrren());
+        saveUser(responce.resUser!);
+        Get.off(() => GlobalScrren());
       } else {
         Get.showSnackbar(GetSnackBar(
           message: responce.msg.toString(),

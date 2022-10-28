@@ -20,7 +20,7 @@ class TabScreen2 extends StatelessWidget {
         child: ListView(
           children: [
             const HomeCategoryBanner(text: "Trending"),
-            const PopulerItems(),
+             PopulerItems(),
             const Padding(
               padding: EdgeInsets.only(bottom: 8.0),
               child: HomeCategoryBanner(text: "Categories"),

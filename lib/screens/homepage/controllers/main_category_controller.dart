@@ -41,13 +41,6 @@ class MainCategoryController extends GetxController {
     super.onInit();
   }
 
-  List<Widget> screenList = [
-    TabScreen1(),
-    TabScreen2(),
-    const TabScreen3(),
-    const TabScreen4()
-  ];
-
   Widget getScreen(
     String? screen,
   ) {

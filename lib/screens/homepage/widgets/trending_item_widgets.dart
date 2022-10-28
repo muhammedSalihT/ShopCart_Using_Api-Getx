@@ -2,11 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/screens/homepage/controllers/trending_product_controller.dart';
+import 'package:project_shopcart/screens/product_description/controllers/product_controller.dart';
+import 'package:project_shopcart/screens/product_description/views/product_description_screen.dart';
 
 class PopulerItems extends StatelessWidget {
-  const PopulerItems({
+  PopulerItems({
     Key? key,
   }) : super(key: key);
+
+  final productController = Get.find<ProductController>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +31,21 @@ class PopulerItems extends StatelessWidget {
             (index) => Stack(
               alignment: AlignmentDirectional.bottomCenter,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(trendingController
-                            .trendingList[index].images!.img1
-                            .toString())),
+                GestureDetector(
+                  onTap: () {
+                    productController.getProductDetails(
+                        trendingController.trendingList[index].id!);
+                    Get.to(() => ProductDescriptionScreen());
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(trendingController
+                              .trendingList[index].images!.img1
+                              .toString())),
+                    ),
                   ),
                 ),
                 Positioned(

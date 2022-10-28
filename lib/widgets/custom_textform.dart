@@ -23,7 +23,7 @@ class CustomTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 320,
+      width: width,
       child: TextFormField(
         textInputAction: TextInputAction.next,
         controller: controller,

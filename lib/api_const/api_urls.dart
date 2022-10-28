@@ -7,4 +7,5 @@ class Url {
   static String subCategorie = "api/getAllSubCategories/";
   static String trending = "api/getTrending/";
   static String budget = "api/getbudget/";
+  static String product = "api/getAll";
 }

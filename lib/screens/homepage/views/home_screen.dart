@@ -5,12 +5,15 @@ import 'package:project_shopcart/screens/homepage/controllers/home_controller.da
 import 'package:project_shopcart/screens/homepage/controllers/main_category_controller.dart';
 import 'package:project_shopcart/screens/homepage/responsive/tabbar.dart';
 import 'package:project_shopcart/screens/homepage/widgets/custom_appbar.dart';
+import 'package:project_shopcart/screens/product_description/controllers/product_controller.dart';
 
 class HomeScreen extends GetView {
   HomeScreen({Key? key}) : super(key: key);
 final homeController = Get.put(HomeController());
   final mainCategoryController = Get.put(MainCategoryController());
   final budgetController = Get.find<BudgetProductController>();
+  final productController = Get.put(ProductController());
+
   
 
   @override

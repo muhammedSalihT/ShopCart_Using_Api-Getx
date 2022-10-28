@@ -1,22 +1,36 @@
-class GetTrendingModel {
-  GetTrendingModel({
-    this.trending,
+// To parse this JSON data, do
+//
+//     final productModel = productModelFromJson(jsonString);
+
+import 'dart:convert';
+
+ProductModel productModelFromJson(String str) =>
+    ProductModel.fromJson(json.decode(str));
+
+String productModelToJson(ProductModel data) => json.encode(data.toJson());
+
+class ProductModel {
+  ProductModel({
+    this.singleProduct,
     this.message,
   });
 
-  List<Trending>? trending;
+  SingleProduct? singleProduct;
   String? message;
 
-  factory GetTrendingModel.fromJson(Map<String, dynamic> json) =>
-      GetTrendingModel(
-        trending: List<Trending>.from(
-            json["trending"].map((x) => Trending.fromJson(x))),
+  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
+        singleProduct: SingleProduct.fromJson(json["singleProduct"]),
         message: json["message"],
       );
+
+  Map<String, dynamic> toJson() => {
+        "singleProduct": singleProduct!.toJson(),
+        "message": message,
+      };
 }
 
-class Trending {
-  Trending({
+class SingleProduct {
+  SingleProduct({
     this.images,
     this.coustemerRatimg,
     this.productDescription,
@@ -25,8 +39,8 @@ class Trending {
     this.categoryName,
     this.productName,
     this.productPrize,
-    this.offerPrize,
     this.productType,
+    this.offerPrize,
     this.productSubCategorie,
     this.quantity,
     this.v,
@@ -40,13 +54,13 @@ class Trending {
   String? categoryName;
   String? productName;
   int? productPrize;
-  int? offerPrize;
   String? productType;
+  int? offerPrize;
   String? productSubCategorie;
   int? quantity;
   int? v;
 
-  factory Trending.fromJson(Map<String, dynamic> json) => Trending(
+  factory SingleProduct.fromJson(Map<String, dynamic> json) => SingleProduct(
         images: Images.fromJson(json["images"]),
         coustemerRatimg: json["coustemerRatimg"].toDouble(),
         productDescription: json["productDescription"],
@@ -55,12 +69,28 @@ class Trending {
         categoryName: json["categoryName"],
         productName: json["productName"],
         productPrize: json["productPrize"],
-        offerPrize: json["offerPrize"],
         productType: json["productType"],
+        offerPrize: json["offerPrize"],
         productSubCategorie: json["productSubCategorie"],
         quantity: json["quantity"],
         v: json["__v"],
       );
+
+  Map<String, dynamic> toJson() => {
+        "images": images!.toJson(),
+        "coustemerRatimg": coustemerRatimg,
+        "productDescription": productDescription,
+        "deliveryCharge": deliveryCharge,
+        "_id": id,
+        "categoryName": categoryName,
+        "productName": productName,
+        "productPrize": productPrize,
+        "productType": productType,
+        "offerPrize": offerPrize,
+        "productSubCategorie": productSubCategorie,
+        "quantity": quantity,
+        "__v": v,
+      };
 }
 
 class Images {
