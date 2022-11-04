@@ -14,9 +14,7 @@ class MainCategoryController extends GetxController {
   List<GetAllCategories> mainCategoryList = [];
 
   final subCategoryController = Get.put(SubCategorieController());
-
   
-
   getMainCategorieData() async {
     log("maincate called");
     final responce = await MainCategorieApi().getAllMainCategories();

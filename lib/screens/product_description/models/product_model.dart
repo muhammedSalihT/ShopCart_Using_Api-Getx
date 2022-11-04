@@ -49,7 +49,7 @@ class SingleProduct {
   Images? images;
   double? coustemerRatimg;
   String? productDescription;
-  String? deliveryCharge;
+  int? deliveryCharge;
   String? id;
   String? categoryName;
   String? productName;

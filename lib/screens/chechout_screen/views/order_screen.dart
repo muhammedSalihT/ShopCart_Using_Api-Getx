@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/screens/chechout_screen/controllers/checkout_screenController.dart';
+import 'package:project_shopcart/screens/chechout_screen/controllers/order_screen_controller.dart';
 import 'package:project_shopcart/screens/homepage/widgets/home_category_banner.dart';
+import 'package:project_shopcart/screens/product_description/controllers/product_controller.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrderScreen extends GetView<OrderScreenController> {
   OrderScreen({Key? key, this.index}) : super(key: key);
 
   final int? index;
   final chechOutController = Get.find<ChechOutScreenController>();
+  final productController = Get.find<ProductController>();
+  final orderController = Get.put(OrderScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +31,9 @@ class OrderScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Image.asset(
-                          "assets/images.jpg",
-                          fit: BoxFit.fill,
+                        child: Image.network(
+                          productController.productImage.first,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       const SizedBox(
@@ -43,41 +47,67 @@ class OrderScreen extends StatelessWidget {
                             const SizedBox(
                               height: 5,
                             ),
-                            const Text(
-                              "Men half sleeve slim fit",
-                              style: TextStyle(
+                            Text(
+                              productController.product!.productName!,
+                              style: const TextStyle(
                                   fontSize: 25,
                                   overflow: TextOverflow.ellipsis),
                             ),
                             SizedBox(
                               height: 40,
                               child: Row(
-                                children: const [
+                                children: [
                                   Text(
-                                    "\u{20B9}699",
-                                    style: TextStyle(fontSize: 20),
+                                    "\u{20B9}${productController.product!.productPrize!}",
+                                    style: const TextStyle(fontSize: 20),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
-                                    "\u{20B9}489",
-                                    style: TextStyle(fontSize: 20),
+                                    "\u{20B9}${productController.product!.offerPrize!}",
+                                    style: const TextStyle(fontSize: 20),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
-                                    "\u{20B9}210 saved",
-                                    style: TextStyle(fontSize: 20),
+                                    "\u{20B9}${productController.product!.productPrize! - productController.product!.offerPrize!}\tSaved",
+                                    style: const TextStyle(fontSize: 20),
                                   )
                                 ],
                               ),
                             ),
-                            const Text(
-                              "Size:M",
-                              style: TextStyle(fontSize: 20),
-                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    "Size:\t",
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  DropdownButtonHideUnderline(child: Obx(() {
+                                    return DropdownButton(
+                                      onChanged: (value) {
+                                        orderController.selectedSize.value =
+                                            value.toString();
+                                      },
+                                      value: orderController.selectedSize.value,
+                                      items: orderController.sizeList
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                        return DropdownMenuItem(
+                                            value: value,
+                                            child: Text(
+                                              value,
+                                              style:
+                                                  const TextStyle(fontSize: 20),
+                                            ));
+                                      }).toList(),
+                                    );
+                                  }))
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       )
@@ -104,20 +134,27 @@ class OrderScreen extends StatelessWidget {
                               "Qty:",
                               style: TextStyle(fontSize: 20),
                             ),
-                            DropdownButton(
-                              items: <String>[
-                                'One',
-                                'Two',
-                                'Free',
-                                'Four'
-                              ].map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {},
-                            )
+                            Obx(() {
+                              return DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  onChanged: (value) {
+                                    orderController.selectedQty.value =
+                                        value.toString();
+                                  },
+                                  value: orderController.selectedQty.value,
+                                  items: orderController.qtyList
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                    return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(
+                                          value,
+                                          style: const TextStyle(fontSize: 20),
+                                        ));
+                                  }).toList(),
+                                ),
+                              );
+                            })
                           ],
                         ),
                       ),
@@ -133,46 +170,69 @@ class OrderScreen extends StatelessWidget {
               children: [
                 const HomeCategoryBanner(text: "Price Deatils"),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text("Price(1 item)"),
-                    Text(
-                      "\u{20B9}1,599",
+                  children: [
+                    const Text(
+                      "Price(1 item)",
                       style: TextStyle(fontSize: 20),
+                    ),
+                    Text(
+                      "\u{20B9}${productController.product!.productPrize!}/-",
+                      style: const TextStyle(fontSize: 20),
                     )
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text("Discount"),
-                    Text(
-                      "-\u{20B9}600",
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
+                const SizedBox(
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text("Delivery Charges"),
-                    Text(
-                      "free delivery",
+                  children: [
+                    const Text(
+                      "Discount",
                       style: TextStyle(fontSize: 20),
+                    ),
+                    Text(
+                      "-\u{20B9}${(productController.product!.productPrize)! - (productController.product!.offerPrize!)}/-",
+                      style: const TextStyle(fontSize: 20),
                     )
                   ],
                 ),
-                const Divider(),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text("Total amount"),
-                    Text(
-                      "\u{20B9}999",
+                  children: [
+                    const Text(
+                      "Delivery Charges",
                       style: TextStyle(fontSize: 20),
+                    ),
+                    Text(
+                      productController.product!.deliveryCharge == 0
+                          ? "Free Delivery"
+                          : productController.product!.deliveryCharge!
+                              .toString(),
+                      style: const TextStyle(fontSize: 20, color: Colors.green),
+                    )
+                  ],
+                ),
+                const Divider(
+                  thickness: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Total amount",
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    Text(
+                      "\u{20B9}${(productController.product!.offerPrize!) + (productController.product!.deliveryCharge != 0 ? productController.product!.deliveryCharge! : 0)}",
+                      style: const TextStyle(fontSize: 25),
                     )
                   ],
                 ),
@@ -190,9 +250,9 @@ class OrderScreen extends StatelessWidget {
               "Total amount:",
               style: TextStyle(color: Colors.white),
             ),
-            const Text(
-              "\u{20B9}999",
-              style: TextStyle(
+            Text(
+              "\u{20B9}${(productController.product!.offerPrize!) + (productController.product!.deliveryCharge != 0 ? productController.product!.deliveryCharge! : 0)}",
+              style: const TextStyle(
                 fontSize: 20,
                 color: Colors.white,
               ),

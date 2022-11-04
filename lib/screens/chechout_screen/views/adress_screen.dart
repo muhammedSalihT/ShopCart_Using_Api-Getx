@@ -19,33 +19,31 @@ class AdressScreen extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const HomeCategoryBanner(text: "Add shipping adress"),
-                  Box().sizedBox1,
-                  const CustomTextForm(hintText: "Reciver Name"),
-                  Box().sizedBox1,
-                  const CustomTextForm(hintText: "Reciver Mobile Number"),
-                  Box().sizedBox1,
-                  const CustomTextForm(hintText: "Reciver pin code"),
-                  Box().sizedBox1,
-                  const CustomTextForm(hintText: "Reciver Adress"),
-                  Box().sizedBox1,
-                  Center(
-                      child: ElevatedButton(
-                          onPressed: () {}, child: const Text("Save"))),
-                  const HomeCategoryBanner(text: "Use Default Adress"),
-                  ...List.generate(
-                    3,
-                    (index) => button(
-                      index: index,
-                      text: "dds",
-                    ),
-                  )
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const HomeCategoryBanner(text: "Add shipping adress"),
+                Box().sizedBox1,
+                const CustomTextForm(hintText: "Reciver Name"),
+                Box().sizedBox1,
+                const CustomTextForm(hintText: "Reciver Mobile Number"),
+                Box().sizedBox1,
+                const CustomTextForm(hintText: "Reciver pin code"),
+                Box().sizedBox1,
+                const CustomTextForm(hintText: "Reciver Adress"),
+                Box().sizedBox1,
+                Center(
+                    child: ElevatedButton(
+                        onPressed: () {}, child: const Text("Save"))),
+                const HomeCategoryBanner(text: "Use Default Adress"),
+                ...List.generate(
+                  3,
+                  (index) => button(
+                    index: index,
+                    text: "dds",
+                  ),
+                )
+              ],
             ),
           )
         ],

@@ -22,8 +22,11 @@ class RegistrationController extends GetxController {
   ResUser? user;
   ResUser? currUser;
   final storage = const FlutterSecureStorage();
+  // ignore: non_constant_identifier_names
   final String USER_ID = 'user.id';
-  final String User_Number ='user.phoneNumber';
+  // ignore: non_constant_identifier_names
+  final String User_Number = 'user.phoneNumber';
+  // ignore: non_constant_identifier_names
   final String User_name = 'user.email';
 
   saveUser(ResUser user) {

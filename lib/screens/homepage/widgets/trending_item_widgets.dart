@@ -32,7 +32,8 @@ class PopulerItems extends StatelessWidget {
               alignment: AlignmentDirectional.bottomCenter,
               children: [
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    productController.productImage.clear();
                     productController.getProductDetails(
                         trendingController.trendingList[index].id!);
                     Get.to(() => ProductDescriptionScreen());

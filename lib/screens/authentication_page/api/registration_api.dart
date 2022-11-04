@@ -11,7 +11,6 @@ class RegistrationApi {
       final responce =
           await Dio(baseOptions).post(Url.signUp, data: userModel.toJson());
       if (responce.statusCode == 200) {
-        log('hihhi');
         return SignUpResponseModel.fromJson(responce.data);
       } else {
         return SignUpResponseModel(msg: responce.statusMessage);

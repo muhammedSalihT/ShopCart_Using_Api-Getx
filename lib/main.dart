@@ -14,6 +14,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.green),
+          )),
           primarySwatch: Colors.blue,
         ),
         home: SpalshScreen());

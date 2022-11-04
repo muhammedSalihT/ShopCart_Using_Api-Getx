@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:project_shopcart/constends/sizes.dart';
+import 'package:project_shopcart/screens/cart_screen/views/cart_screen.dart';
 import 'package:project_shopcart/screens/global_screen/controllers/global_controller.dart';
 import 'package:project_shopcart/screens/homepage/controllers/home_controller.dart';
 
@@ -46,20 +47,23 @@ class HidingBottomBar extends StatelessWidget {
                         duration: const Duration(milliseconds: 400),
                         tabBackgroundColor: Colors.grey.withOpacity(.5),
                         color: Colors.white,
-                        tabs: const [
-                          GButton(
+                        tabs: [
+                          const GButton(
                             icon: Icons.home,
                             text: 'Home',
                           ),
-                          GButton(
+                          const GButton(
                             icon: Icons.search,
                             text: 'Search',
                           ),
                           GButton(
+                            onPressed: () {
+                              Get.to(() => CartScreen());
+                            },
                             icon: Icons.shop,
                             text: 'Cart',
                           ),
-                          GButton(
+                          const GButton(
                             icon: Icons.person,
                             text: 'Profile',
                           ),

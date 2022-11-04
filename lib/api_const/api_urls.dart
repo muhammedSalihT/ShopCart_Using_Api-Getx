@@ -8,4 +8,7 @@ class Url {
   static String trending = "api/getTrending/";
   static String budget = "api/getbudget/";
   static String product = "api/getAll";
+  static String addToCart = "api/addtocart";
+  static String getCart = "api/getallcart/?user_Id=";
+  static String deleteCart = "api/deleteItem/?cartitem_Id=";
 }

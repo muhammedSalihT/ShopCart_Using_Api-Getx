@@ -1,6 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:project_shopcart/screens/cart_screen/api/cart_api.dart';
+import 'package:project_shopcart/screens/cart_screen/api/addto_cart_api.dart';
 import 'package:project_shopcart/screens/cart_screen/models/add_to_cart_model.dart';
 
 class AddToCartController extends GetxController {

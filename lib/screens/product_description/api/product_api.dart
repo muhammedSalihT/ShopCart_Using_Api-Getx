@@ -10,8 +10,6 @@ class ProductApi {
       log("${Url.baseUrl}${Url.product}/$id");
       Response responce = await Dio().get("${Url.baseUrl}${Url.product}/$id");
       if (responce.statusCode == 200) {
-        log('message1');
-        log("gfhghjhj ${responce.data}");
         return ProductModel.fromJson(responce.data);
       } else {
         return ProductModel(message: "Unknown error Occured");

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_shopcart/screens/cart_screen/controllers/addtocart_controller.dart';
+import 'package:project_shopcart/screens/cart_screen/controllers/fetch_cart_controller.dart';
 import 'package:project_shopcart/screens/homepage/controllers/budgetzone_controller.dart';
 import 'package:project_shopcart/screens/homepage/controllers/home_controller.dart';
 import 'package:project_shopcart/screens/homepage/controllers/main_category_controller.dart';
@@ -9,12 +11,12 @@ import 'package:project_shopcart/screens/product_description/controllers/product
 
 class HomeScreen extends GetView {
   HomeScreen({Key? key}) : super(key: key);
-final homeController = Get.put(HomeController());
+  final homeController = Get.put(HomeController());
   final mainCategoryController = Get.put(MainCategoryController());
   final budgetController = Get.find<BudgetProductController>();
   final productController = Get.put(ProductController());
-
-  
+  final cartController = Get.put(AddToCartController());
+  final cartfetchController = Get.put(FetchCartController());
 
   @override
   Widget build(BuildContext context) {

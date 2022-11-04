@@ -6,13 +6,19 @@ import 'package:project_shopcart/screens/product_description/models/product_mode
 
 class ProductController extends GetxController {
   SingleProduct? product;
+  bool onLoad = false;
+  List<String> productImage = [];
 
   getProductDetails(String productId) async {
+    onLoad = true;
     ProductModel responce = await ProductApi().getProduct(id: productId);
     if (responce.singleProduct != null) {
-      log("message");
-      log(responce.singleProduct.toString());
       product = responce.singleProduct!;
+      log(responce.singleProduct!.productName!);
+      responce.singleProduct!.images!.toJson().forEach((key, value) {
+        return productImage.add(value);
+      });
+      onLoad = false;
       update();
     }
   }

@@ -43,7 +43,6 @@ class Responsive {
           tappedCategorie.value = mainCategoryController
               .mainCategoryList[value].mainProduct
               .toString();
-          log(tappedCategorie.value);
         },
       );
     }
