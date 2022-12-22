@@ -9,11 +9,8 @@ class BudgetApi {
     try {
       final responce =
           await Dio().get("${Url.baseUrl}${Url.budget}$tappedCategorie/$prize");
-      log("${Url.baseUrl}${Url.budget}$tappedCategorie/$prize");
       if (responce.statusCode == 200) {
         final datalist = GetBudgetModel.fromJson(responce.data);
-        log("=============================");
-        log(datalist.budget!.first.productName.toString());
         return datalist;
       } else {
         return GetBudgetModel(message: "Unknown error occuired");

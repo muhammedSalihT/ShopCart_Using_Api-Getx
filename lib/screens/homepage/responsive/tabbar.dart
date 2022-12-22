@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/screens/homepage/controllers/main_category_controller.dart';
@@ -31,7 +30,7 @@ class Responsive {
     } else {
       return TabBar(
         physics: const NeverScrollableScrollPhysics(),
-        indicator: const BoxDecoration(color: Colors.white),
+        indicator: BoxDecoration(border: Border.all(color: Colors.blue)),
         labelColor: Colors.blue,
         isScrollable: true,
         tabs: mainCategoryController.mainCategoryList.map((e) {

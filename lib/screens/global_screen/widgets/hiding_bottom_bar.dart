@@ -52,16 +52,16 @@ class HidingBottomBar extends StatelessWidget {
                             icon: Icons.home,
                             text: 'Home',
                           ),
-                          const GButton(
-                            icon: Icons.search,
-                            text: 'Search',
-                          ),
                           GButton(
                             onPressed: () {
                               Get.to(() => CartScreen());
                             },
                             icon: Icons.shop,
                             text: 'Cart',
+                          ),
+                          const GButton(
+                            icon: Icons.favorite_rounded,
+                            text: 'Favouirte',
                           ),
                           const GButton(
                             icon: Icons.person,

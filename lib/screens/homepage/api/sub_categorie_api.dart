@@ -18,12 +18,8 @@ class SubCategorieApi {
         return SubCategorieModel(msg: "Check your connectivity ");
       }
     } on DioError catch (e) {
-      log('dio error');
-      log("api call${e.response!.data.toString()}");
       return SubCategorieModel(msg: e.response!.data.toString());
     } catch (e) {
-      print('catch error');
-      print(e.toString());
       return SubCategorieModel(msg: e.toString());
     }
   }

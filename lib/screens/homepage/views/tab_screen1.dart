@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_shopcart/screens/homepage/controllers/budgetzone_controller.dart';
 import 'package:project_shopcart/screens/homepage/widgets/budget_widget.dart';
-import 'package:project_shopcart/screens/product_description/controllers/product_controller.dart';
 import '../widgets/home_category_banner.dart';
 import '../widgets/recently_item_widgets.dart';
 import '../widgets/sub_categorie_widget.dart';
@@ -23,7 +22,7 @@ class TabScreen1 extends GetView {
           const HomeCategoryBanner(text: "Recently Viewed Items"),
           RecentlyViewedItems(size: size),
           const HomeCategoryBanner(text: "Trending"),
-           PopulerItems(),
+          PopulerItems(),
           const Padding(
             padding: EdgeInsets.only(bottom: 8.0),
             child: HomeCategoryBanner(text: "Categories"),

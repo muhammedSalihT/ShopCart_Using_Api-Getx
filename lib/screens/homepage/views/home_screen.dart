@@ -23,8 +23,12 @@ class HomeScreen extends GetView {
     return SafeArea(
       child: Scaffold(
         extendBody: true,
-        appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(40), child: AppBarWidget()),
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(60),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
+              child: AppBarWidget(),
+            )),
         body: GetBuilder<MainCategoryController>(
           builder: (mainCategoryController) {
             return DefaultTabController(

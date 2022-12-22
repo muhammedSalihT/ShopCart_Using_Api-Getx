@@ -3,22 +3,27 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-
   late ScrollController scrollController = ScrollController();
   late final Duration duration;
   RxBool isVisible = true.obs;
 
- 
+  bool isSearchVisibile = false;
+
+  
+
+  void onSearchButtonPress() {
+    isSearchVisibile = true;
+    update();
+  }
 
   @override
   void onInit() {
+    
     duration = const Duration(microseconds: 200);
     scrollController = ScrollController();
     scrollController.addListener(listen);
     super.onInit();
   }
-
- 
 
   void listen() {
     final direction = scrollController.position.userScrollDirection;
@@ -32,11 +37,13 @@ class HomeController extends GetxController {
 
   void show() {
     isVisible.value = true;
+    isSearchVisibile = false;
     update();
   }
 
   void hide() {
     isVisible.value = false;
+    isSearchVisibile = false;
     update();
   }
 

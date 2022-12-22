@@ -11,4 +11,5 @@ class Url {
   static String addToCart = "api/addtocart";
   static String getCart = "api/getallcart/?user_Id=";
   static String deleteCart = "api/deleteItem/?cartitem_Id=";
+  static String search = "api/searchProduct/";
 }
